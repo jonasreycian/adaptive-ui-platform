@@ -1,0 +1,28 @@
+name: design_system_showcase
+description: Showcase app demonstrating the adaptive UI platform.
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  core_engine:
+    path: ../core_engine
+  branding_engine:
+    path: ../branding_engine
+  adaptive_components:
+    path: ../adaptive_components
+  dashboard_framework:
+    path: ../dashboard_framework
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
