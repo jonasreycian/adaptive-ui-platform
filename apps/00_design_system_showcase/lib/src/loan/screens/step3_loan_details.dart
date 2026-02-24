@@ -245,7 +245,7 @@ class _LoanDetailsStepState extends State<LoanDetailsStep> {
                                 'Estimated Monthly Payment',
                                 style: typography.labelSmall.copyWith(
                                   color:
-                                      colors.onPrimary.withAlpha(100),
+                                      colors.onPrimary.withOpacity(0.4),
                                 ),
                               ),
                               Text(

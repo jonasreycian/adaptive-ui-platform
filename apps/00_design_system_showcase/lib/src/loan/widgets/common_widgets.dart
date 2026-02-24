@@ -123,7 +123,7 @@ class _StepCircle extends StatelessWidget {
         boxShadow: isActive
             ? [
                 BoxShadow(
-                  color: colors.accent.withValues(alpha: 50),
+                  color: colors.accent.withOpacity(50 / 255),
                   blurRadius: 8,
                   offset: const Offset(0, 2),
                 ),
