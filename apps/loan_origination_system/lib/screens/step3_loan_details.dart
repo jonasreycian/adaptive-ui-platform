@@ -2,14 +2,16 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 
 import '../models/loan_application.dart';
 import '../theme/app_theme.dart';
+import '../viewmodels/loan_form_viewmodel.dart';
 import '../widgets/common_widgets.dart';
 
 class LoanDetailsStep extends StatefulWidget {
-  const LoanDetailsStep({super.key});
+  final LoanFormViewModel viewModel;
+
+  const LoanDetailsStep({super.key, required this.viewModel});
 
   @override
   State<LoanDetailsStep> createState() => _LoanDetailsStepState();
@@ -53,8 +55,7 @@ class _LoanDetailsStepState extends State<LoanDetailsStep> {
   @override
   void initState() {
     super.initState();
-    final app =
-        context.read<LoanApplicationState>().application;
+    final app = widget.viewModel.application;
     _amountCtrl =
         TextEditingController(text: app.loanAmount);
     _selectedPurpose =
@@ -73,19 +74,17 @@ class _LoanDetailsStepState extends State<LoanDetailsStep> {
 
   void _saveAndContinue() {
     if (_formKey.currentState!.validate()) {
-      final state = context.read<LoanApplicationState>();
-      final app = state.application;
+      final app = widget.viewModel.application;
       app.loanPurpose = _selectedPurpose ?? '';
       app.loanAmount = _amountCtrl.text.trim();
       app.loanTenure = _selectedTenure ?? '';
       app.collateralType = _selectedCollateral ?? '';
-      state.nextStep();
+      widget.viewModel.nextStep();
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<LoanApplicationState>();
     return Form(
       key: _formKey,
       child: Column(
@@ -285,7 +284,7 @@ class _LoanDetailsStepState extends State<LoanDetailsStep> {
           NavigationButtons(
             isFirstStep: false,
             isLastStep: false,
-            onBack: state.previousStep,
+            onBack: widget.viewModel.previousStep,
             onNext: _saveAndContinue,
           ),
         ],

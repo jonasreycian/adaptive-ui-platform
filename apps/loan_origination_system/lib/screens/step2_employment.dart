@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 
 import '../models/loan_application.dart';
 import '../theme/app_theme.dart';
+import '../viewmodels/loan_form_viewmodel.dart';
 import '../widgets/common_widgets.dart';
 
 class EmploymentDetailsStep extends StatefulWidget {
-  const EmploymentDetailsStep({super.key});
+  final LoanFormViewModel viewModel;
+
+  const EmploymentDetailsStep({super.key, required this.viewModel});
 
   @override
   State<EmploymentDetailsStep> createState() =>
@@ -34,8 +36,7 @@ class _EmploymentDetailsStepState
   @override
   void initState() {
     super.initState();
-    final app =
-        context.read<LoanApplicationState>().application;
+    final app = widget.viewModel.application;
     _employerCtrl =
         TextEditingController(text: app.employerName);
     _jobTitleCtrl =
@@ -59,20 +60,18 @@ class _EmploymentDetailsStepState
 
   void _saveAndContinue() {
     if (_formKey.currentState!.validate()) {
-      final state = context.read<LoanApplicationState>();
-      final app = state.application;
+      final app = widget.viewModel.application;
       app.employmentType = _selectedEmploymentType ?? '';
       app.employerName = _employerCtrl.text.trim();
       app.jobTitle = _jobTitleCtrl.text.trim();
       app.monthlyIncome = _incomeCtrl.text.trim();
       app.yearsEmployed = _yearsCtrl.text.trim();
-      state.nextStep();
+      widget.viewModel.nextStep();
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<LoanApplicationState>();
     return Form(
       key: _formKey,
       child: Column(
@@ -265,7 +264,7 @@ class _EmploymentDetailsStepState
           NavigationButtons(
             isFirstStep: false,
             isLastStep: false,
-            onBack: state.previousStep,
+            onBack: widget.viewModel.previousStep,
             onNext: _saveAndContinue,
           ),
         ],

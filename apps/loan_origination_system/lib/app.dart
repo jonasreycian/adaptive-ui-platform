@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:stacked/stacked.dart';
 
-import 'models/loan_application.dart';
 import 'screens/step1_personal_info.dart';
 import 'screens/step2_employment.dart';
 import 'screens/step3_loan_details.dart';
 import 'screens/step4_review_submit.dart';
 import 'screens/success_screen.dart';
 import 'theme/app_theme.dart';
+import 'viewmodels/loan_form_viewmodel.dart';
 import 'widgets/common_widgets.dart';
 
 // ---------------------------------------------------------------------------
@@ -18,13 +18,14 @@ class LoanOriginationApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => LoanApplicationState(),
-      child: MaterialApp(
-        title: 'Loan Origination System',
-        theme: AppTheme.light,
-        debugShowCheckedModeBanner: false,
-        home: const _LoanApplicationShell(),
+    return MaterialApp(
+      title: 'Loan Origination System',
+      theme: AppTheme.light,
+      debugShowCheckedModeBanner: false,
+      home: ViewModelBuilder<LoanFormViewModel>.reactive(
+        viewModelBuilder: LoanFormViewModel.new,
+        builder: (context, viewModel, child) =>
+            _LoanApplicationShell(viewModel: viewModel),
       ),
     );
   }
@@ -34,33 +35,31 @@ class LoanOriginationApp extends StatelessWidget {
 // Application Shell — Responsive Layout
 // ---------------------------------------------------------------------------
 class _LoanApplicationShell extends StatelessWidget {
-  const _LoanApplicationShell();
+  final LoanFormViewModel viewModel;
+
+  const _LoanApplicationShell({required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<LoanApplicationState>();
     final width = MediaQuery.of(context).size.width;
     final isWide = width >= 768;
 
-    if (state.submitted) {
+    if (viewModel.submitted) {
       return Scaffold(
-        appBar: _buildAppBar(context, showProgress: false),
-        body: const SuccessScreen(),
+        appBar: _buildAppBar(showProgress: false),
+        body: SuccessScreen(viewModel: viewModel),
       );
     }
 
     return Scaffold(
-      appBar: _buildAppBar(context, showProgress: true),
+      appBar: _buildAppBar(showProgress: true),
       body: isWide
-          ? _WideLayout(state: state)
-          : _NarrowLayout(state: state),
+          ? _WideLayout(viewModel: viewModel)
+          : _NarrowLayout(viewModel: viewModel),
     );
   }
 
-  PreferredSizeWidget _buildAppBar(
-    BuildContext context, {
-    required bool showProgress,
-  }) {
+  PreferredSizeWidget _buildAppBar({required bool showProgress}) {
     return AppBar(
       leading: Padding(
         padding: const EdgeInsets.all(AppSpacing.sm),
@@ -84,13 +83,11 @@ class _LoanApplicationShell extends StatelessWidget {
               horizontal: AppSpacing.base,
               vertical: AppSpacing.md,
             ),
-            child: Consumer<LoanApplicationState>(
-              builder: (_, state, __) => InfoChip(
-                label: 'Step ${state.currentStep + 1} of '
-                    '${LoanApplicationState.totalSteps}',
-                icon: Icons.linear_scale,
-                color: AppColors.accent,
-              ),
+            child: InfoChip(
+              label: 'Step ${viewModel.currentStep + 1} of '
+                  '${LoanFormViewModel.totalSteps}',
+              icon: Icons.linear_scale,
+              color: AppColors.accent,
             ),
           ),
       ],
@@ -102,23 +99,21 @@ class _LoanApplicationShell extends StatelessWidget {
 // Wide Layout (Tablet / Desktop) — Sidebar + Form
 // ---------------------------------------------------------------------------
 class _WideLayout extends StatelessWidget {
-  final LoanApplicationState state;
+  final LoanFormViewModel viewModel;
 
-  const _WideLayout({required this.state});
+  const _WideLayout({required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Sidebar
         SizedBox(
           width: 240,
-          child: _Sidebar(state: state),
+          child: _Sidebar(viewModel: viewModel),
         ),
-        // Form Area
         Expanded(
-          child: _FormArea(state: state),
+          child: _FormArea(viewModel: viewModel),
         ),
       ],
     );
@@ -129,15 +124,14 @@ class _WideLayout extends StatelessWidget {
 // Narrow Layout (Mobile) — Single Column
 // ---------------------------------------------------------------------------
 class _NarrowLayout extends StatelessWidget {
-  final LoanApplicationState state;
+  final LoanFormViewModel viewModel;
 
-  const _NarrowLayout({required this.state});
+  const _NarrowLayout({required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Progress Bar
         Container(
           color: AppColors.surface,
           padding: const EdgeInsets.fromLTRB(
@@ -147,8 +141,8 @@ class _NarrowLayout extends StatelessWidget {
             AppSpacing.base,
           ),
           child: StepProgressIndicator(
-            currentStep: state.currentStep,
-            totalSteps: LoanApplicationState.totalSteps,
+            currentStep: viewModel.currentStep,
+            totalSteps: LoanFormViewModel.totalSteps,
             labels: const [
               'Personal',
               'Employment',
@@ -157,7 +151,7 @@ class _NarrowLayout extends StatelessWidget {
             ],
           ),
         ),
-        Expanded(child: _FormArea(state: state)),
+        Expanded(child: _FormArea(viewModel: viewModel)),
       ],
     );
   }
@@ -167,9 +161,9 @@ class _NarrowLayout extends StatelessWidget {
 // Sidebar (Wide Only)
 // ---------------------------------------------------------------------------
 class _Sidebar extends StatelessWidget {
-  final LoanApplicationState state;
+  final LoanFormViewModel viewModel;
 
-  const _Sidebar({required this.state});
+  const _Sidebar({required this.viewModel});
 
   static const _steps = [
     _StepMeta(
@@ -220,8 +214,7 @@ class _Sidebar extends StatelessWidget {
                   padding: const EdgeInsets.all(AppSpacing.sm),
                   decoration: BoxDecoration(
                     color: AppColors.accent,
-                    borderRadius:
-                        BorderRadius.circular(AppRadius.md),
+                    borderRadius: BorderRadius.circular(AppRadius.md),
                   ),
                   child: const Icon(
                     Icons.account_balance,
@@ -239,28 +232,25 @@ class _Sidebar extends StatelessWidget {
                 Text(
                   'Complete all steps to apply',
                   style: AppTypography.labelSmall.copyWith(
-                    color:
-                        AppColors.textOnPrimary.withOpacity(0.6),
+                    color: AppColors.textOnPrimary.withOpacity(0.6),
                   ),
                 ),
               ],
             ),
           ),
 
-          const Divider(
-              height: 1,
-              color: Color(0x33FFFFFF)),
+          const Divider(height: 1, color: Color(0x33FFFFFF)),
 
           // Steps list
           Expanded(
             child: ListView.builder(
-              padding: const EdgeInsets.symmetric(
-                  vertical: AppSpacing.md),
+              padding:
+                  const EdgeInsets.symmetric(vertical: AppSpacing.md),
               itemCount: _steps.length,
               itemBuilder: (_, index) {
                 final step = _steps[index];
-                final isCompleted = index < state.currentStep;
-                final isActive = index == state.currentStep;
+                final isCompleted = index < viewModel.currentStep;
+                final isActive = index == viewModel.currentStep;
                 return _SidebarStepTile(
                   step: step,
                   index: index,
@@ -277,18 +267,16 @@ class _Sidebar extends StatelessWidget {
             child: Column(
               children: [
                 Row(
-                  mainAxisAlignment:
-                      MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       'Progress',
                       style: AppTypography.labelSmall.copyWith(
-                        color: AppColors.textOnPrimary
-                            .withOpacity(0.6),
+                        color: AppColors.textOnPrimary.withOpacity(0.6),
                       ),
                     ),
                     Text(
-                      '${((state.progressFraction) * 100).round()}%',
+                      '${((viewModel.progressFraction) * 100).round()}%',
                       style: AppTypography.labelLarge.copyWith(
                         color: AppColors.accent,
                       ),
@@ -300,7 +288,7 @@ class _Sidebar extends StatelessWidget {
                   borderRadius:
                       BorderRadius.circular(AppRadius.full),
                   child: LinearProgressIndicator(
-                    value: state.progressFraction,
+                    value: viewModel.progressFraction,
                     backgroundColor:
                         AppColors.textOnPrimary.withOpacity(0.2),
                     valueColor: const AlwaysStoppedAnimation<Color>(
@@ -381,22 +369,19 @@ class _SidebarStepTile extends StatelessWidget {
                   ? AppColors.accent
                   : isActive
                       ? AppColors.accent
-                      : AppColors.textOnPrimary
-                          .withOpacity(0.3),
+                      : AppColors.textOnPrimary.withOpacity(0.3),
             ),
           ),
           child: Center(
             child: isCompleted
                 ? const Icon(Icons.check,
-                    size: 14,
-                    color: AppColors.textOnAccent)
+                    size: 14, color: AppColors.textOnAccent)
                 : Text(
                     '${index + 1}',
                     style: AppTypography.labelSmall.copyWith(
                       color: isActive
                           ? AppColors.textOnPrimary
-                          : AppColors.textOnPrimary
-                              .withOpacity(0.5),
+                          : AppColors.textOnPrimary.withOpacity(0.5),
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -428,9 +413,9 @@ class _SidebarStepTile extends StatelessWidget {
 // Form Area (Scrollable Content)
 // ---------------------------------------------------------------------------
 class _FormArea extends StatelessWidget {
-  final LoanApplicationState state;
+  final LoanFormViewModel viewModel;
 
-  const _FormArea({required this.state});
+  const _FormArea({required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -463,8 +448,8 @@ class _FormArea extends StatelessWidget {
               );
             },
             child: KeyedSubtree(
-              key: ValueKey(state.currentStep),
-              child: _buildStep(state.currentStep),
+              key: ValueKey(viewModel.currentStep),
+              child: _buildStep(viewModel.currentStep),
             ),
           ),
         ),
@@ -475,15 +460,15 @@ class _FormArea extends StatelessWidget {
   Widget _buildStep(int step) {
     switch (step) {
       case 0:
-        return const PersonalInfoStep();
+        return PersonalInfoStep(viewModel: viewModel);
       case 1:
-        return const EmploymentDetailsStep();
+        return EmploymentDetailsStep(viewModel: viewModel);
       case 2:
-        return const LoanDetailsStep();
+        return LoanDetailsStep(viewModel: viewModel);
       case 3:
-        return const ReviewSubmitStep();
+        return ReviewSubmitStep(viewModel: viewModel);
       default:
-        return const PersonalInfoStep();
+        return PersonalInfoStep(viewModel: viewModel);
     }
   }
 }

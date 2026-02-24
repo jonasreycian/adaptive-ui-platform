@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../models/loan_application.dart';
 import '../theme/app_theme.dart';
+import '../viewmodels/loan_form_viewmodel.dart';
 import '../widgets/common_widgets.dart';
 
 class SuccessScreen extends StatelessWidget {
-  const SuccessScreen({super.key});
+  final LoanFormViewModel viewModel;
+
+  const SuccessScreen({super.key, required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<LoanApplicationState>();
-    final app = state.application;
+    final app = viewModel.application;
 
     return Center(
       child: SingleChildScrollView(
@@ -94,7 +94,7 @@ class SuccessScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: AppSpacing.xs),
                   Text(
-                    state.referenceNumber,
+                    viewModel.referenceNumber,
                     style: AppTypography.displayLarge.copyWith(
                       color: AppColors.accent,
                       letterSpacing: 2,
@@ -119,7 +119,7 @@ class SuccessScreen extends StatelessWidget {
               alignment: WrapAlignment.center,
               children: [
                 InfoChip(
-                  label: state.formattedLoanAmount,
+                  label: viewModel.formattedLoanAmount,
                   icon: Icons.attach_money,
                   color: AppColors.primary,
                 ),
@@ -192,7 +192,7 @@ class SuccessScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton.icon(
-                onPressed: () => state.reset(),
+                onPressed: () => viewModel.reset(),
                 icon: const Icon(Icons.add_circle_outline),
                 label: const Text('Start New Application'),
                 style: ElevatedButton.styleFrom(

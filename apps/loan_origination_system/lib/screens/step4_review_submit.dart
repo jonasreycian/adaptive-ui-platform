@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../models/loan_application.dart';
 import '../theme/app_theme.dart';
+import '../viewmodels/loan_form_viewmodel.dart';
 import '../widgets/common_widgets.dart';
 
 class ReviewSubmitStep extends StatefulWidget {
-  const ReviewSubmitStep({super.key});
+  final LoanFormViewModel viewModel;
+
+  const ReviewSubmitStep({super.key, required this.viewModel});
 
   @override
   State<ReviewSubmitStep> createState() => _ReviewSubmitStepState();
@@ -18,8 +19,7 @@ class _ReviewSubmitStepState extends State<ReviewSubmitStep> {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<LoanApplicationState>();
-    final app = state.application;
+    final app = widget.viewModel.application;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +36,7 @@ class _ReviewSubmitStepState extends State<ReviewSubmitStep> {
           title: 'Personal Information',
           icon: Icons.person_outline,
           stepIndex: 0,
-          onEdit: () => state.goToStep(0),
+          onEdit: () => widget.viewModel.goToStep(0),
           rows: [
             ReviewRow(
                 label: 'Full Name',
@@ -62,7 +62,7 @@ class _ReviewSubmitStepState extends State<ReviewSubmitStep> {
           title: 'Employment Details',
           icon: Icons.work_outline,
           stepIndex: 1,
-          onEdit: () => state.goToStep(1),
+          onEdit: () => widget.viewModel.goToStep(1),
           rows: [
             ReviewRow(
                 label: 'Employment Type',
@@ -89,13 +89,13 @@ class _ReviewSubmitStepState extends State<ReviewSubmitStep> {
           title: 'Loan Details',
           icon: Icons.account_balance_outlined,
           stepIndex: 2,
-          onEdit: () => state.goToStep(2),
+          onEdit: () => widget.viewModel.goToStep(2),
           rows: [
             ReviewRow(
                 label: 'Purpose', value: app.loanPurpose),
             ReviewRow(
               label: 'Loan Amount',
-              value: state.formattedLoanAmount,
+              value: widget.viewModel.formattedLoanAmount,
               highlight: true,
             ),
             ReviewRow(label: 'Tenure', value: app.loanTenure),
@@ -147,7 +147,7 @@ class _ReviewSubmitStepState extends State<ReviewSubmitStep> {
         NavigationButtons(
           isFirstStep: false,
           isLastStep: true,
-          onBack: state.previousStep,
+          onBack: widget.viewModel.previousStep,
           nextLabel: 'Submit Application',
           onNext: () {
             if (!_confirmedAccuracy || !_agreedToTerms) {
@@ -166,7 +166,7 @@ class _ReviewSubmitStepState extends State<ReviewSubmitStep> {
               );
               return;
             }
-            _showConfirmDialog(context, state);
+            _showConfirmDialog(context, widget.viewModel);
           },
         ),
       ],
@@ -175,7 +175,7 @@ class _ReviewSubmitStepState extends State<ReviewSubmitStep> {
 
   Future<void> _showConfirmDialog(
     BuildContext context,
-    LoanApplicationState state,
+    LoanFormViewModel viewModel,
   ) async {
     final confirmed = await showDialog<bool>(
       context: context,
@@ -202,7 +202,7 @@ class _ReviewSubmitStepState extends State<ReviewSubmitStep> {
       ),
     );
     if (confirmed == true) {
-      state.submit();
+      viewModel.submit();
     }
   }
 }

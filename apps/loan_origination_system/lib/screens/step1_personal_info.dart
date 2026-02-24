@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 
 import '../models/loan_application.dart';
 import '../theme/app_theme.dart';
+import '../viewmodels/loan_form_viewmodel.dart';
 import '../widgets/common_widgets.dart';
 
 class PersonalInfoStep extends StatefulWidget {
-  const PersonalInfoStep({super.key});
+  final LoanFormViewModel viewModel;
+
+  const PersonalInfoStep({super.key, required this.viewModel});
 
   @override
   State<PersonalInfoStep> createState() => _PersonalInfoStepState();
@@ -31,8 +33,7 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
   @override
   void initState() {
     super.initState();
-    final app =
-        context.read<LoanApplicationState>().application;
+    final app = widget.viewModel.application;
     _firstNameCtrl = TextEditingController(text: app.firstName);
     _lastNameCtrl = TextEditingController(text: app.lastName);
     _dobCtrl = TextEditingController(text: app.dateOfBirth);
@@ -61,8 +62,7 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
 
   void _saveAndContinue() {
     if (_formKey.currentState!.validate()) {
-      final state = context.read<LoanApplicationState>();
-      final app = state.application;
+      final app = widget.viewModel.application;
       app.firstName = _firstNameCtrl.text.trim();
       app.lastName = _lastNameCtrl.text.trim();
       app.dateOfBirth = _dobCtrl.text.trim();
@@ -74,7 +74,7 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
       app.city = _cityCtrl.text.trim();
       app.state = _stateCtrl.text.trim();
       app.postalCode = _postalCtrl.text.trim();
-      state.nextStep();
+      widget.viewModel.nextStep();
     }
   }
 
