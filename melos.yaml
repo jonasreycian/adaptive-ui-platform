@@ -1,0 +1,25 @@
+name: adaptive_ui_platform
+
+packages:
+  - packages/**
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
+
+scripts:
+  analyze:
+    run: melos exec --ignore="ckgroup_core_cli" -- flutter analyze
+    description: Run flutter analyze in all Flutter packages
+
+  analyze:dart:
+    run: melos exec --scope="ckgroup_core_cli" -- dart analyze
+    description: Run dart analyze in pure-Dart packages
+
+  test:
+    run: melos exec --ignore="ckgroup_core_cli" -- flutter test
+    description: Run flutter test in all Flutter packages
+
+  test:dart:
+    run: melos exec --scope="ckgroup_core_cli" -- dart test
+    description: Run dart test in pure-Dart packages
