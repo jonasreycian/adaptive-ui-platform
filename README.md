@@ -58,3 +58,112 @@ See [`docs/BOOTSTRAP_EXECUTION_PLAN.md`](docs/BOOTSTRAP_EXECUTION_PLAN.md) for t
 | [`docs/MULTI_APP_CONSUMPTION.md`](docs/MULTI_APP_CONSUMPTION.md) | How host apps consume platform packages via Git or path dependencies |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Branching, coding standards, commit conventions |
 | [`CHANGELOG.md`](CHANGELOG.md) | Version history |
+
+---
+
+## Copilot Guidelines
+
+> These guidelines help GitHub Copilot (and other AI coding assistants) generate
+> code that fits correctly into this monorepo.
+
+### Package ownership
+
+| Package | Responsibility |
+|---|---|
+| `core_engine` | Design tokens (`ColorTokens`, `SpacingTokens`, `MotionTokens`, …) and `TokenResolver` |
+| `branding_engine` | `BrandConfig`, `BrandRegistry`, `BrandResolver`, `defaultBrand` |
+| `adaptive_components` | Token-driven widgets — `AdaptiveButton`, `AdaptiveTextField`, `AdaptiveScaffold`, … |
+| `dashboard_framework` | Layouts, shell, grid, role-based module registry, `DashboardShell` |
+| `design_system_showcase` | Demo Flutter app wiring all packages together |
+| `ckgroup_core_cli` | Pure-Dart CLI for managing `page_registry.json` |
+
+Dependency direction (never reverse this):
+```
+apps / design_system_showcase
+       ↓
+dashboard_framework
+       ↓
+adaptive_components
+       ↓
+branding_engine
+       ↓
+core_engine
+```
+
+### Token rules (critical)
+
+- **Never** use raw `Color()`, `EdgeInsets`, `BorderRadius`, or `Duration` literals in widget or feature code.
+- All colors, spacing, radii, elevations, and motion values must be read via `TokenResolver.of(context)`:
+  ```dart
+  final tokens = TokenResolver.of(context);
+  // ✅ correct
+  padding: EdgeInsets.all(tokens.spacing.lg),
+  color: tokens.colors.primary,
+  // ❌ forbidden
+  padding: EdgeInsets.all(16),
+  color: Color(0xFF04382F),
+  ```
+- `Color()` constructors are allowed **only** inside `packages/core_engine/lib/src/tokens/color_tokens.dart`.
+- `Duration()` constructors are allowed **only** inside `packages/core_engine/lib/src/tokens/motion_tokens.dart`.
+
+### Widget guidelines
+
+- Prefer `AdaptiveScaffold` over `Scaffold`.
+- Use `AdaptiveButton` (with `AdaptiveButtonVariant`) instead of raw `ElevatedButton` / `TextButton`.
+- Wrap custom widgets in a `TokenResolver` + `BrandResolver` in tests (see existing test helpers).
+- Annotate immutable value classes with `@immutable` and use `const` constructors wherever possible.
+
+### Test requirements
+
+Every PR that introduces or modifies code must include **all three** of:
+
+1. **Unit tests** — logic, registries, view-models (`<package>/test/<class>_test.dart`)
+2. **Widget tests** — rendering and interactions (`<package>/test/<widget>_test.dart`)
+3. **E2E / integration tests** — full app flows (`<app>/integration_test/<flow>_test.dart`)
+
+Test helper pattern (copy from any existing test file):
+```dart
+Widget buildUnderTest({required Widget child, bool isDark = false}) {
+  final colors = isDark ? ColorTokens.dark : ColorTokens.light;
+  return MaterialApp(
+    home: TokenResolver(
+      colors: colors,
+      spacing: SpacingTokens.instance,
+      typography: TypographyTokens.instance,
+      radius: RadiusTokens.instance,
+      elevation: ElevationTokens.instance,
+      motion: MotionTokens.instance,
+      child: Scaffold(body: child),
+    ),
+  );
+}
+```
+
+### Commit message format
+
+```
+feat(adaptive_components): add AdaptiveCard widget
+fix(dashboard_framework): correct sidebar collapse animation
+test(core_engine): cover MotionTokens edge cases
+docs: update MULTI_APP_CONSUMPTION.md
+```
+
+Follow [Conventional Commits](https://www.conventionalcommits.org/). Scope must match the affected package name.
+
+### Running checks locally
+
+```bash
+# Analyze all packages
+melos analyze
+melos analyze:dart   # pure-Dart packages
+
+# Test all packages
+melos test
+melos test:dart      # pure-Dart packages
+
+# Single package
+cd packages/<package_name>
+flutter test
+```
+
+CI runs `flutter analyze` and `flutter test` on every package for every push and pull request to `main`.
