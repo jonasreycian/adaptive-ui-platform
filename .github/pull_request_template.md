@@ -33,7 +33,7 @@ Closes #
 ## Tests
 
 > Every PR that adds or modifies code **must** include all applicable test types.
-> See [`docs/TESTING_STRATEGY.md`](../docs/TESTING_STRATEGY.md) for guidance.
+> See [`docs/TESTING_STRATEGY.md`](docs/TESTING_STRATEGY.md) for guidance.
 
 - [ ] **Unit tests** added / updated (`<package>/test/<class>_test.dart`)
 - [ ] **Widget tests** added / updated (`<package>/test/<widget>_test.dart`)
