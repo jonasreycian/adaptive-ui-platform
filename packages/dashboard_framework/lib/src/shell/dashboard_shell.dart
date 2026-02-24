@@ -64,7 +64,7 @@ class _DashboardShellState extends State<DashboardShell>
     super.initState();
     _collapseController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 300),
+      duration: MotionTokens.instance.normal,
     );
     _collapseAnimation = CurvedAnimation(
       parent: _collapseController,
@@ -177,7 +177,7 @@ class _DashboardShellState extends State<DashboardShell>
                   ? layout.collapsedSidebarWidth
                   : layout.sidebarWidth;
               return AnimatedContainer(
-                duration: const Duration(milliseconds: 300),
+                duration: MotionTokens.instance.normal,
                 curve: Curves.easeInOut,
                 width: width,
                 color: colors.surface,
