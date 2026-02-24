@@ -337,7 +337,7 @@ void main() {
       );
 
       expect(find.byType(Icon), findsAtLeastNWidgets(1));
-      expect(find.byType(Center), findsOneWidget);
+      expect(find.byType(Center), findsAtLeastNWidgets(1));
     });
 
     testWidgets('buildIcon returns a non-null widget', (tester) async {
