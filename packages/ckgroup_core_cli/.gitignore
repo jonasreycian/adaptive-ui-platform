@@ -1,1 +1,9 @@
-analysis_options.yaml
+# Dart tool directory
+.dart_tool/
+
+# Build output
+build/
+
+# pub cache
+.pub-cache/
+.pub/
