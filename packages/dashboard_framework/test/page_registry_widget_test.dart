@@ -75,7 +75,7 @@ const String _multiPageJson = '''
 void main() {
   group('PageEntry', () {
     test('fromJson parses all fields', () {
-      final entry = PageEntry.fromJson({
+      final entry = PageEntry.fromJson(const {
         'pageName': 'Loans',
         'route': '/loans',
         'roles': ['Admin', 'LoanSupervisor', 'Creditor'],
@@ -89,7 +89,7 @@ void main() {
     });
 
     test('fromJson works without optional iconName', () {
-      final entry = PageEntry.fromJson({
+      final entry = PageEntry.fromJson(const {
         'pageName': 'Reports',
         'route': '/reports',
         'roles': ['Admin'],

@@ -118,7 +118,7 @@ class _ColorRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final hex =
-        '#${color.value.toRadixString(16).substring(2).toUpperCase()}';
+        '#${color.toARGB32().toRadixString(16).substring(2).toUpperCase()}';
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(

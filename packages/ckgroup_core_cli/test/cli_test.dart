@@ -72,7 +72,7 @@ void main() {
     });
 
     test('addPage throws ArgumentError on duplicate route', () {
-      var data = {'version': '1', 'pages': <Map<String, dynamic>>[]};
+      var data = <String, dynamic>{'version': '1', 'pages': <Map<String, dynamic>>[]};
       data = PageRegistryIo.addPage(
         data,
         pageName: 'Loans',
@@ -97,7 +97,7 @@ void main() {
     });
 
     test('hasPage returns true after addPage', () {
-      var data = {'version': '1', 'pages': <Map<String, dynamic>>[]};
+      var data = <String, dynamic>{'version': '1', 'pages': <Map<String, dynamic>>[]};
       data = PageRegistryIo.addPage(
         data,
         pageName: 'Loans',

@@ -55,11 +55,11 @@ void main() {
 
   group('ColorTokens', () {
     test('light primary is #04382f', () {
-      expect(ColorTokens.light.primary.value, 0xFF04382F);
+      expect(ColorTokens.light.primary.toARGB32(), 0xFF04382F);
     });
 
     test('dark background is #021d18', () {
-      expect(ColorTokens.dark.background.value, 0xFF021D18);
+      expect(ColorTokens.dark.background.toARGB32(), 0xFF021D18);
     });
 
     test('copyWith replaces only specified fields', () {
@@ -75,8 +75,8 @@ void main() {
         onAccent: Color(0xFF000000),
       );
       final copy = updated.copyWith(primary: const Color(0xFFFFFFFF));
-      expect(copy.primary.value, 0xFFFFFFFF);
-      expect(copy.accent.value, 0xFF000000);
+      expect(copy.primary.toARGB32(), 0xFFFFFFFF);
+      expect(copy.accent.toARGB32(), 0xFF000000);
     });
   });
 
