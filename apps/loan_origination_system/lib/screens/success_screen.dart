@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../viewmodels/loan_form_viewmodel.dart';
 import '../widgets/common_widgets.dart';
+import 'loan_applications_screen.dart';
 
 class SuccessScreen extends StatelessWidget {
   final LoanFormViewModel viewModel;
@@ -189,6 +190,19 @@ class SuccessScreen extends StatelessWidget {
             const SizedBox(height: AppSpacing.xl),
 
             // Action buttons
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton.icon(
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) => const LoanApplicationsScreen(),
+                  ),
+                ),
+                icon: const Icon(Icons.table_chart_outlined),
+                label: const Text('View All Applications'),
+              ),
+            ),
+            const SizedBox(height: AppSpacing.md),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton.icon(
