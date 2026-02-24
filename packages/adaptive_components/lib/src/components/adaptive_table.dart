@@ -148,14 +148,19 @@ class _AdaptiveTableState<T> extends State<AdaptiveTable<T>> {
     }
 
     if (_sortColumnKey != null) {
-      final col = widget.columns.firstWhere(
-        (c) => c.key == _sortColumnKey,
-        orElse: () => widget.columns.first,
-      );
-      if (col.sortValue != null) {
+      AdaptiveTableColumn<T>? col;
+      if (widget.columns.isNotEmpty) {
+        for (final c in widget.columns) {
+          if (c.key == _sortColumnKey) {
+            col = c;
+            break;
+          }
+        }
+      }
+      if (col != null && col.sortValue != null) {
         rows = List<T>.from(rows)
           ..sort((a, b) {
-            final cmp = col.sortValue!(a).compareTo(col.sortValue!(b));
+            final cmp = col!.sortValue!(a).compareTo(col.sortValue!(b));
             return _sortDirection == AdaptiveTableSortDirection.ascending
                 ? cmp
                 : -cmp;
