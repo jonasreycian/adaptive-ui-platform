@@ -10,7 +10,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Nothing yet.
+- `docs/DEVELOPMENT_LIFECYCLE.md` — full lifecycle guide from discovery through CI/CD and release.
+- `docs/TESTING_STRATEGY.md` — widget, unit, and E2E test standards with code examples.
+- `docs/FLUTTER_BEST_PRACTICES.md` — Flutter coding rules for all packages and demo apps.
+- `docs/STACKED_AND_BLOC_INTEGRATION.md` — integration guides for Stacked and BLoC architectures.
+- `.github/pull_request_template.md` — PR checklist enforcing test requirements.
+- `README.md` — documentation index table and **Copilot Guidelines** section.
+- Updated `CONTRIBUTING.md` to reference new docs and clarify test requirements.
+- `packages/design_system_showcase/test/showcase_test.dart` — widget tests for `ShowcaseApp`.
+
+### Fixed
+- `dashboard_framework` — `page_registry_widget_test.dart`: relaxed `Center` assertion from `findsOneWidget` to `findsAtLeastNWidgets(1)` to be resilient against internal Flutter framework widgets.
+- `.github/pull_request_template.md` — corrected relative link path for `TESTING_STRATEGY.md`.
 
 ---
 

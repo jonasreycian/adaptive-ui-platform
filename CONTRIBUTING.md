@@ -59,6 +59,10 @@ adaptive-ui-platform/
 
 ## Coding Standards
 
+For the full set of Flutter coding rules, patterns, and examples, see [`docs/FLUTTER_BEST_PRACTICES.md`](docs/FLUTTER_BEST_PRACTICES.md).
+
+For integration patterns with Stacked and BLoC architectures, see [`docs/STACKED_AND_BLOC_INTEGRATION.md`](docs/STACKED_AND_BLOC_INTEGRATION.md).
+
 ### General
 
 - Use null safety everywhere (`sdk: '>=3.0.0 <4.0.0'`).
@@ -82,9 +86,15 @@ adaptive-ui-platform/
 
 ### Tests
 
-- Pure Dart tests: `package:test/test.dart`
-- Widget tests: `package:flutter_test/flutter_test.dart`
-- Every new public API must have at least one test.
+Every pull request that adds or modifies code **must** include all applicable test types:
+
+- **Unit tests** — pure Dart logic, models, registries (`package:test` or `flutter_test`)
+- **Widget tests** — widget rendering and interactions (`flutter_test`)
+- **E2E / integration tests** — full app flows (`integration_test`)
+
+Every new public API must have at least one test.
+
+See [`docs/TESTING_STRATEGY.md`](docs/TESTING_STRATEGY.md) for detailed examples and coverage expectations.
 
 ---
 
