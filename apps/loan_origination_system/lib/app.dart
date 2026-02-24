@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:core_engine/core_engine.dart';
+import 'package:branding_engine/branding_engine.dart';
 
 import 'screens/step1_personal_info.dart';
 import 'screens/step2_employment.dart';
@@ -22,10 +24,21 @@ class LoanOriginationApp extends StatelessWidget {
       title: 'Loan Origination System',
       theme: AppTheme.light,
       debugShowCheckedModeBanner: false,
-      home: ViewModelBuilder<LoanFormViewModel>.reactive(
-        viewModelBuilder: LoanFormViewModel.new,
-        builder: (context, viewModel, child) =>
-            _LoanApplicationShell(viewModel: viewModel),
+      home: TokenResolver(
+        colors: ColorTokens.light,
+        spacing: SpacingTokens.instance,
+        typography: TypographyTokens.instance,
+        radius: RadiusTokens.instance,
+        elevation: ElevationTokens.instance,
+        motion: MotionTokens.instance,
+        child: BrandResolver(
+          brand: defaultBrand,
+          child: ViewModelBuilder<LoanFormViewModel>.reactive(
+            viewModelBuilder: LoanFormViewModel.new,
+            builder: (context, viewModel, child) =>
+                _LoanApplicationShell(viewModel: viewModel),
+          ),
+        ),
       ),
     );
   }

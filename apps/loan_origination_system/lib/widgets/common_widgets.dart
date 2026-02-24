@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:adaptive_components/adaptive_components.dart';
 import '../theme/app_theme.dart';
 
 // ---------------------------------------------------------------------------
@@ -283,7 +284,7 @@ class ReviewRow extends StatelessWidget {
 }
 
 // ---------------------------------------------------------------------------
-// Navigation Buttons Row
+// Navigation Buttons Row — uses AdaptiveButton from adaptive_components
 // ---------------------------------------------------------------------------
 class NavigationButtons extends StatelessWidget {
   final bool isFirstStep;
@@ -307,27 +308,27 @@ class NavigationButtons extends StatelessWidget {
       children: [
         if (!isFirstStep) ...[
           Expanded(
-            child: OutlinedButton.icon(
-              onPressed: onBack,
+            child: AdaptiveButton(
+              label: 'Back',
+              variant: AdaptiveButtonVariant.outlined,
               icon: const Icon(Icons.arrow_back, size: 18),
-              label: const Text('Back'),
+              onPressed: onBack,
+              isFullWidth: true,
             ),
           ),
           const SizedBox(width: AppSpacing.md),
         ],
         Expanded(
           flex: 2,
-          child: ElevatedButton.icon(
-            onPressed: onNext,
+          child: AdaptiveButton(
+            label: nextLabel,
+            variant: AdaptiveButtonVariant.primary,
             icon: Icon(
               isLastStep ? Icons.send_rounded : Icons.arrow_forward,
               size: 18,
             ),
-            label: Text(nextLabel),
-            style: ElevatedButton.styleFrom(
-              backgroundColor:
-                  isLastStep ? AppColors.success : AppColors.primary,
-            ),
+            onPressed: onNext,
+            isFullWidth: true,
           ),
         ),
       ],
