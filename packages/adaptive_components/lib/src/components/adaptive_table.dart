@@ -207,6 +207,7 @@ class _AdaptiveTableState<T> extends State<AdaptiveTable<T>> {
         _sortColumnKey = columnKey;
         _sortDirection = AdaptiveTableSortDirection.ascending;
       }
+      _currentPage = 0;
     });
     widget.onSort?.call(columnKey, _sortDirection);
   }
