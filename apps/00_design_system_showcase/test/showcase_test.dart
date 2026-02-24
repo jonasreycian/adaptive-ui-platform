@@ -28,6 +28,7 @@ void main() {
       expect(find.text('Components'), findsOneWidget);
       expect(find.text('Dashboard'), findsOneWidget);
       expect(find.text('Brand Switcher'), findsOneWidget);
+      expect(find.text('Loan Application'), findsOneWidget);
     });
 
     testWidgets('HomeScreen AppBar shows title', (tester) async {
