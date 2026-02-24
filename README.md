@@ -43,3 +43,18 @@ See [`apps/loan_origination_system/README.md`](apps/loan_origination_system/READ
 ## Platform Bootstrap Plan
 
 See [`docs/BOOTSTRAP_EXECUTION_PLAN.md`](docs/BOOTSTRAP_EXECUTION_PLAN.md) for the full platform architecture and build roadmap.
+
+---
+
+## Documentation
+
+| Document | Description |
+|---|---|
+| [`docs/BOOTSTRAP_EXECUTION_PLAN.md`](docs/BOOTSTRAP_EXECUTION_PLAN.md) | Platform architecture layers and bootstrap phase status |
+| [`docs/DEVELOPMENT_LIFECYCLE.md`](docs/DEVELOPMENT_LIFECYCLE.md) | Full lifecycle: discovery → design → development → testing → CI/CD → release |
+| [`docs/TESTING_STRATEGY.md`](docs/TESTING_STRATEGY.md) | Widget, unit, and E2E test standards with code examples |
+| [`docs/FLUTTER_BEST_PRACTICES.md`](docs/FLUTTER_BEST_PRACTICES.md) | Flutter coding rules and patterns for all packages and demo apps |
+| [`docs/STACKED_AND_BLOC_INTEGRATION.md`](docs/STACKED_AND_BLOC_INTEGRATION.md) | Integration guides for Stacked and BLoC architectures |
+| [`docs/MULTI_APP_CONSUMPTION.md`](docs/MULTI_APP_CONSUMPTION.md) | How host apps consume platform packages via Git or path dependencies |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Branching, coding standards, commit conventions |
+| [`CHANGELOG.md`](CHANGELOG.md) | Version history |
