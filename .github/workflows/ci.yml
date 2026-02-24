@@ -110,32 +110,6 @@ jobs:
       - name: Test
         run: flutter test
 
-  # ── design_system_showcase ───────────────────────────────────────────────────
-  design_system_showcase:
-    name: design_system_showcase
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: packages/design_system_showcase
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.x'
-          channel: stable
-          cache: true
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Analyze
-        run: flutter analyze
-
-      - name: Test
-        run: flutter test
-
-
   # ── ckgroup_core_cli (pure Dart) ─────────────────────────────────────────────
   ckgroup_core_cli:
     name: ckgroup_core_cli
@@ -158,3 +132,53 @@ jobs:
 
       - name: Test
         run: dart test
+
+# ── Demo apps ───────────────────────────────────────────────────
+  design_system_showcase:
+    name: app/00_design_system_showcase
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/00_design_system_showcase
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.x'
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test
+
+  # ──────────────────────────────────────────────────────────────────────────────
+  loan_origination_system:
+    name: app/01_loan_origination_system
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/01_loan_origination_system
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.x'
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test
