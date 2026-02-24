@@ -53,8 +53,8 @@ class AddCommand {
   /// Executes the `add` command with [results].
   ///
   /// Returns `0` on success, `1` on validation error.
-  static int run(ArgResults results, {void Function(String)? print}) {
-    final out = print ?? (String msg) => stdout(msg);
+  static int run(ArgResults results, {void Function(String)? output}) {
+    final out = output ?? stdout;
 
     final pageName = results['page'] as String;
     final rolesRaw = results['roles'] as String;

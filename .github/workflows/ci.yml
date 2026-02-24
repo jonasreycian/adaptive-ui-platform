@@ -134,3 +134,27 @@ jobs:
 
       - name: Test
         run: flutter test
+
+
+  # ── ckgroup_core_cli (pure Dart) ─────────────────────────────────────────────
+  ckgroup_core_cli:
+    name: ckgroup_core_cli
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/ckgroup_core_cli
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Analyze
+        run: dart analyze
+
+      - name: Test
+        run: dart test

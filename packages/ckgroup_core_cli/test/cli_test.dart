@@ -129,7 +129,7 @@ void main() {
         ...extraArgs,
       ]);
       final messages = <String>[];
-      return AddCommand.run(results, print: messages.add);
+      return AddCommand.run(results, output: messages.add);
     }
 
     test('returns 0 and writes file on valid input', () {
