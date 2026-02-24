@@ -17,6 +17,14 @@ abstract class AdaptiveModule {
   /// The roles that are allowed to see this module.
   List<UserRole> get allowedRoles;
 
+  /// String-based role names used for dynamic/custom role matching.
+  ///
+  /// Defaults to the lowercase [UserRole.name] values of [allowedRoles].
+  /// Override in subclasses (e.g. [DynamicPageModule]) to supply custom roles
+  /// that are not in the [UserRole] enum.
+  List<String> get allowedRoleNames =>
+      allowedRoles.map((r) => r.name.toLowerCase()).toList();
+
   /// Builds the primary content widget for this module.
   Widget buildContent(BuildContext context);
 

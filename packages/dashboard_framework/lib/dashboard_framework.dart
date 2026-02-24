@@ -10,3 +10,6 @@ export 'src/roles/dashboard_preset.dart';
 export 'src/roles/preset_registry.dart';
 export 'src/plugins/adaptive_module.dart';
 export 'src/plugins/module_registry.dart';
+export 'src/registry/page_entry.dart';
+export 'src/registry/dynamic_page_module.dart';
+export 'src/registry/page_registry_service.dart';

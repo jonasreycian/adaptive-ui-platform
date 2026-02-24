@@ -44,6 +44,18 @@ class ModuleRegistry {
       .where((m) => m.allowedRoles.contains(role))
       .toList();
 
+  /// Returns all modules accessible to any of the given [roleNames].
+  ///
+  /// Matching is case-insensitive. This supports both built-in [UserRole]
+  /// values (matched via [AdaptiveModule.allowedRoleNames]) and custom string
+  /// roles introduced via [DynamicPageModule].
+  List<AdaptiveModule> forRoleNames(List<String> roleNames) {
+    final lower = roleNames.map((r) => r.toLowerCase()).toSet();
+    return _modules.values
+        .where((m) => m.allowedRoleNames.any(lower.contains))
+        .toList();
+  }
+
   /// Clears all registered modules (useful in tests).
   void clear() => _modules.clear();
 }
