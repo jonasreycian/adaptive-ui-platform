@@ -35,7 +35,7 @@ class _LoanDetailsStepState extends State<LoanDetailsStep> {
     if (months <= 0) return 0;
     // PMT formula with 8% annual interest rate
     const annualRate = 0.08;
-    final monthlyRate = annualRate / 12;
+    const monthlyRate = annualRate / 12;
     final pmt = amount *
         (monthlyRate * math.pow(1 + monthlyRate, months)) /
         (math.pow(1 + monthlyRate, months) - 1);
@@ -97,7 +97,7 @@ class _LoanDetailsStepState extends State<LoanDetailsStep> {
             label: 'Loan Purpose',
             isRequired: true,
             child: DropdownButtonFormField<String>(
-              value: _selectedPurpose,
+              initialValue: _selectedPurpose,
               hint: const Text('Why do you need this loan?'),
               isExpanded: true,
               items: loanPurposeOptions
@@ -158,7 +158,7 @@ class _LoanDetailsStepState extends State<LoanDetailsStep> {
             label: 'Loan Tenure',
             isRequired: true,
             child: DropdownButtonFormField<String>(
-              value: _selectedTenure,
+              initialValue: _selectedTenure,
               hint: const Text('Select repayment period'),
               isExpanded: true,
               items: tenureOptions
@@ -184,7 +184,7 @@ class _LoanDetailsStepState extends State<LoanDetailsStep> {
             label: 'Collateral Type',
             isRequired: true,
             child: DropdownButtonFormField<String>(
-              value: _selectedCollateral,
+              initialValue: _selectedCollateral,
               hint: const Text('Select collateral (if any)'),
               isExpanded: true,
               items: collateralOptions
@@ -249,8 +249,8 @@ class _LoanDetailsStepState extends State<LoanDetailsStep> {
                               Text(
                                 'Based on ~8% annual interest rate',
                                 style: AppTypography.labelSmall.copyWith(
-                                  color:
-                                      AppColors.textOnPrimary.withOpacity(0.5),
+                                  color: AppColors.textOnPrimary
+                                      .withValues(alpha: 0.5),
                                   fontSize: 10,
                                 ),
                               ),

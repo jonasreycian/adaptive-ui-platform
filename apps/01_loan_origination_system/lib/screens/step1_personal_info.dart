@@ -180,8 +180,9 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
                 child: AppFormField(
                   label: 'Gender',
                   isRequired: true,
+                  // ignore: deprecated_member_use
                   child: DropdownButtonFormField<String>(
-                    value: _selectedGender,
+                    initialValue: _selectedGender,
                     hint: const Text('Select'),
                     items: genderOptions
                         .map((g) => DropdownMenuItem(

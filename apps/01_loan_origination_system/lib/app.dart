@@ -245,7 +245,7 @@ class _Sidebar extends StatelessWidget {
                 Text(
                   'Complete all steps to apply',
                   style: AppTypography.labelSmall.copyWith(
-                    color: AppColors.textOnPrimary.withOpacity(0.6),
+                    color: AppColors.textOnPrimary.withValues(alpha: 0.6),
                   ),
                 ),
               ],
@@ -284,7 +284,7 @@ class _Sidebar extends StatelessWidget {
                     Text(
                       'Progress',
                       style: AppTypography.labelSmall.copyWith(
-                        color: AppColors.textOnPrimary.withOpacity(0.6),
+                        color: AppColors.textOnPrimary.withValues(alpha: 0.6),
                       ),
                     ),
                     Text(
@@ -300,7 +300,8 @@ class _Sidebar extends StatelessWidget {
                   borderRadius: BorderRadius.circular(AppRadius.full),
                   child: LinearProgressIndicator(
                     value: viewModel.progressFraction,
-                    backgroundColor: AppColors.textOnPrimary.withOpacity(0.2),
+                    backgroundColor:
+                        AppColors.textOnPrimary.withValues(alpha: 0.2),
                     valueColor: AlwaysStoppedAnimation<Color>(AppColors.accent),
                     minHeight: 6,
                   ),
@@ -346,11 +347,11 @@ class _SidebarStepTile extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: isActive
-            ? AppColors.textOnPrimary.withOpacity(0.1)
+            ? AppColors.textOnPrimary.withValues(alpha: 0.1)
             : Colors.transparent,
         borderRadius: BorderRadius.circular(AppRadius.md),
         border: isActive
-            ? Border.all(color: AppColors.accent.withOpacity(0.5))
+            ? Border.all(color: AppColors.accent.withValues(alpha: 0.5))
             : null,
       ),
       child: ListTile(
@@ -368,14 +369,14 @@ class _SidebarStepTile extends StatelessWidget {
             color: isCompleted
                 ? AppColors.accent
                 : isActive
-                    ? AppColors.textOnPrimary.withOpacity(0.2)
+                    ? AppColors.textOnPrimary.withValues(alpha: 0.2)
                     : Colors.transparent,
             border: Border.all(
               color: isCompleted
                   ? AppColors.accent
                   : isActive
                       ? AppColors.accent
-                      : AppColors.textOnPrimary.withOpacity(0.3),
+                      : AppColors.textOnPrimary.withValues(alpha: 0.3),
             ),
           ),
           child: Center(
@@ -386,7 +387,7 @@ class _SidebarStepTile extends StatelessWidget {
                     style: AppTypography.labelSmall.copyWith(
                       color: isActive
                           ? AppColors.textOnPrimary
-                          : AppColors.textOnPrimary.withOpacity(0.5),
+                          : AppColors.textOnPrimary.withValues(alpha: 0.5),
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -398,14 +399,14 @@ class _SidebarStepTile extends StatelessWidget {
             color: isActive
                 ? AppColors.textOnPrimary
                 : isCompleted
-                    ? AppColors.textOnPrimary.withOpacity(0.8)
-                    : AppColors.textOnPrimary.withOpacity(0.5),
+                    ? AppColors.textOnPrimary.withValues(alpha: 0.8)
+                    : AppColors.textOnPrimary.withValues(alpha: 0.5),
           ),
         ),
         subtitle: Text(
           step.subtitle,
           style: AppTypography.labelSmall.copyWith(
-            color: AppColors.textOnPrimary.withOpacity(0.4),
+            color: AppColors.textOnPrimary.withValues(alpha: 0.4),
             fontSize: 10,
           ),
         ),

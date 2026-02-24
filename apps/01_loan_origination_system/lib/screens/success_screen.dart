@@ -34,7 +34,7 @@ class SuccessScreen extends StatelessWidget {
                 height: 100,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: AppColors.success.withOpacity(0.1),
+                  color: AppColors.success.withValues(alpha: 0.1),
                   border: Border.all(
                     color: AppColors.success,
                     width: 3,
@@ -79,7 +79,7 @@ class SuccessScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(AppRadius.xl),
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.primary.withOpacity(0.3),
+                    color: AppColors.primary.withValues(alpha: 0.3),
                     blurRadius: 20,
                     offset: const Offset(0, 8),
                   ),
@@ -90,7 +90,7 @@ class SuccessScreen extends StatelessWidget {
                   Text(
                     'Application Reference',
                     style: AppTypography.labelSmall.copyWith(
-                      color: AppColors.textOnPrimary.withOpacity(0.7),
+                      color: AppColors.textOnPrimary.withValues(alpha: 0.7),
                     ),
                   ),
                   const SizedBox(height: AppSpacing.xs),
@@ -105,7 +105,7 @@ class SuccessScreen extends StatelessWidget {
                   Text(
                     'Save this reference number for your records',
                     style: AppTypography.labelSmall.copyWith(
-                      color: AppColors.textOnPrimary.withOpacity(0.5),
+                      color: AppColors.textOnPrimary.withValues(alpha: 0.5),
                     ),
                   ),
                 ],
@@ -151,28 +151,28 @@ class SuccessScreen extends StatelessWidget {
                 children: [
                   Text("What's Next?", style: AppTypography.titleMedium),
                   const SizedBox(height: AppSpacing.md),
-                  _NextStep(
+                  const _NextStep(
                     step: '01',
                     title: 'Application Review',
                     description: 'Our team will review your application within '
                         '1–2 business days.',
                   ),
                   const SizedBox(height: AppSpacing.sm),
-                  _NextStep(
+                  const _NextStep(
                     step: '02',
                     title: 'Document Verification',
                     description: 'You may be contacted to provide additional '
                         'supporting documents.',
                   ),
                   const SizedBox(height: AppSpacing.sm),
-                  _NextStep(
+                  const _NextStep(
                     step: '03',
                     title: 'Credit Assessment',
                     description: 'A credit check will be conducted based on '
                         'your consent.',
                   ),
                   const SizedBox(height: AppSpacing.sm),
-                  _NextStep(
+                  const _NextStep(
                     step: '04',
                     title: 'Decision & Disbursement',
                     description: 'You will receive the decision via email. '
@@ -240,7 +240,7 @@ class _NextStep extends StatelessWidget {
           width: 28,
           height: 28,
           decoration: BoxDecoration(
-            color: AppColors.accent.withOpacity(0.2),
+            color: AppColors.accent.withValues(alpha: 0.2),
             shape: BoxShape.circle,
           ),
           child: Center(

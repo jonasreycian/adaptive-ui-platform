@@ -81,8 +81,9 @@ class _EmploymentDetailsStepState extends State<EmploymentDetailsStep> {
           AppFormField(
             label: 'Employment Type',
             isRequired: true,
+            // ignore: deprecated_member_use
             child: DropdownButtonFormField<String>(
-              value: _selectedEmploymentType,
+              initialValue: _selectedEmploymentType,
               hint: const Text('Select employment type'),
               items: employmentTypeOptions
                   .map((e) => DropdownMenuItem(

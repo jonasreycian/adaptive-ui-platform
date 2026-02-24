@@ -440,9 +440,9 @@ class _StatusBadge extends StatelessWidget {
         vertical: 3,
       ),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.12),
+        color: color.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(AppRadius.full),
-        border: Border.all(color: color.withOpacity(0.4)),
+        border: Border.all(color: color.withValues(alpha: 0.4)),
       ),
       child: Text(
         _statusLabel(status),
@@ -484,7 +484,8 @@ class _FilterChip extends StatelessWidget {
           vertical: AppSpacing.xs,
         ),
         decoration: BoxDecoration(
-          color: selected ? chipColor.withOpacity(0.12) : AppColors.surface,
+          color:
+              selected ? chipColor.withValues(alpha: 0.12) : AppColors.surface,
           borderRadius: BorderRadius.circular(AppRadius.full),
           border: Border.all(
             color: selected ? chipColor : AppColors.border,

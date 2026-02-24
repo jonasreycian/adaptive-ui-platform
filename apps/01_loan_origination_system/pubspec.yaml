@@ -3,6 +3,7 @@ description: >
   A Loan Origination System demo app built on the Adaptive UI Platform.
   Customers can fill out a multi-step loan application form.
 version: 0.1.0+1
+publish_to: 'none'
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
