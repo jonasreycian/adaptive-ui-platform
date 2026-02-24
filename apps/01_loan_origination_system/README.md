@@ -1,6 +1,9 @@
 # Loan Origination System — Demo App
 
-A working demo application built on the **Adaptive UI Platform** that demonstrates a full loan application workflow. Customers can fill out a multi-step form to apply for a loan.
+> **Note:** This app has been merged into the combined
+> [`00_design_system_showcase`](../00_design_system_showcase) app.
+> The combined app includes all the functionality documented here and is the
+> recommended entry point. This directory is kept for reference only.
 
 ---
 
