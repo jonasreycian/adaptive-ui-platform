@@ -28,8 +28,8 @@ class _ShowcaseAppState extends State<ShowcaseApp> {
         final colors = _themeController.colors;
 
         return BrandResolver(
-          brand: BrandRegistry.instance.find('internal_default') ??
-              defaultBrand,
+          brand:
+              BrandRegistry.instance.find('internal_default') ?? defaultBrand,
           child: TokenResolver(
             colors: colors,
             spacing: SpacingTokens.instance,
@@ -66,9 +66,8 @@ class _ShowcaseAppState extends State<ShowcaseApp> {
                   onSurface: ColorTokens.dark.textPrimary,
                 ),
               ),
-              themeMode: _themeController.isDark
-                  ? ThemeMode.dark
-                  : ThemeMode.light,
+              themeMode:
+                  _themeController.isDark ? ThemeMode.dark : ThemeMode.light,
               home: HomeScreen(themeController: _themeController),
             ),
           ),

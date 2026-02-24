@@ -59,8 +59,7 @@ class LoanFormViewModel extends BaseViewModel {
 
   void submit() {
     _submitted = true;
-    _referenceNumber =
-        'LOS-${DateTime.now().millisecondsSinceEpoch ~/ 1000}';
+    _referenceNumber = 'LOS-${DateTime.now().millisecondsSinceEpoch ~/ 1000}';
     notifyListeners();
   }
 
@@ -73,14 +72,11 @@ class LoanFormViewModel extends BaseViewModel {
     _submitted = false;
     _referenceNumber = '';
     final a = application;
-    a.firstName = a.lastName = a.dateOfBirth = a.gender =
-        a.nationalId = '';
-    a.email = a.phone = a.address = a.city = a.state =
-        a.postalCode = '';
+    a.firstName = a.lastName = a.dateOfBirth = a.gender = a.nationalId = '';
+    a.email = a.phone = a.address = a.city = a.state = a.postalCode = '';
     a.employmentType = a.employerName = a.jobTitle = '';
     a.monthlyIncome = a.yearsEmployed = '';
-    a.loanPurpose = a.loanAmount = a.loanTenure =
-        a.collateralType = '';
+    a.loanPurpose = a.loanAmount = a.loanTenure = a.collateralType = '';
     notifyListeners();
   }
 
@@ -88,8 +84,7 @@ class LoanFormViewModel extends BaseViewModel {
   // Derived helpers
   // ──────────────────────────────────────────────────────────────────
 
-  double get progressFraction =>
-      (_currentStep + 1) / totalSteps;
+  double get progressFraction => (_currentStep + 1) / totalSteps;
 
   String get stepLabel {
     switch (_currentStep) {

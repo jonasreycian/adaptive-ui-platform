@@ -47,13 +47,21 @@ class _ComponentDemoScreenState extends State<ComponentDemoScreen> {
             runSpacing: spacing.md,
             children: [
               AdaptiveButton(
-                  label: 'Primary', onPressed: () {}, variant: AdaptiveButtonVariant.primary),
+                  label: 'Primary',
+                  onPressed: () {},
+                  variant: AdaptiveButtonVariant.primary),
               AdaptiveButton(
-                  label: 'Secondary', onPressed: () {}, variant: AdaptiveButtonVariant.secondary),
+                  label: 'Secondary',
+                  onPressed: () {},
+                  variant: AdaptiveButtonVariant.secondary),
               AdaptiveButton(
-                  label: 'Outlined', onPressed: () {}, variant: AdaptiveButtonVariant.outlined),
+                  label: 'Outlined',
+                  onPressed: () {},
+                  variant: AdaptiveButtonVariant.outlined),
               AdaptiveButton(
-                  label: 'Ghost', onPressed: () {}, variant: AdaptiveButtonVariant.ghost),
+                  label: 'Ghost',
+                  onPressed: () {},
+                  variant: AdaptiveButtonVariant.ghost),
               const AdaptiveButton(
                   label: 'Loading', onPressed: null, isLoading: true),
               const AdaptiveButton(label: 'Disabled', onPressed: null),

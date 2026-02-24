@@ -60,9 +60,7 @@ class _DashboardDemoScreenState extends State<DashboardDemoScreen> {
 
 class _OverviewBody extends StatelessWidget {
   const _OverviewBody(
-      {required this.colors,
-      required this.spacing,
-      required this.typography});
+      {required this.colors, required this.spacing, required this.typography});
 
   final ColorTokens colors;
   final SpacingTokens spacing;
@@ -76,8 +74,8 @@ class _OverviewBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('Overview',
-              style:
-                  typography.headlineMedium.copyWith(color: colors.textPrimary)),
+              style: typography.headlineMedium
+                  .copyWith(color: colors.textPrimary)),
           SizedBox(height: spacing.lg),
           DashboardGrid(
             children: List.generate(
@@ -100,9 +98,7 @@ class _OverviewBody extends StatelessWidget {
 
 class _AnalyticsBody extends StatelessWidget {
   const _AnalyticsBody(
-      {required this.colors,
-      required this.spacing,
-      required this.typography});
+      {required this.colors, required this.spacing, required this.typography});
 
   final ColorTokens colors;
   final SpacingTokens spacing;
@@ -119,9 +115,7 @@ class _AnalyticsBody extends StatelessWidget {
 
 class _SettingsBody extends StatelessWidget {
   const _SettingsBody(
-      {required this.colors,
-      required this.spacing,
-      required this.typography});
+      {required this.colors, required this.spacing, required this.typography});
 
   final ColorTokens colors;
   final SpacingTokens spacing;

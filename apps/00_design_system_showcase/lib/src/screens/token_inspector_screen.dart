@@ -80,8 +80,8 @@ class TokenInspectorScreen extends StatelessWidget {
             (e) => Padding(
               padding: EdgeInsets.symmetric(vertical: spacing.xs),
               child: Text('${e.$1}: ${e.$2}ms',
-                  style:
-                      typography.bodyMedium.copyWith(color: colors.textPrimary)),
+                  style: typography.bodyMedium
+                      .copyWith(color: colors.textPrimary)),
             ),
           ),
         ],
@@ -173,8 +173,7 @@ class _SpacingRow extends StatelessWidget {
           ),
           SizedBox(width: spacing.md),
           Text('$name = ${value}dp',
-              style:
-                  typography.bodyMedium.copyWith(color: colors.textPrimary)),
+              style: typography.bodyMedium.copyWith(color: colors.textPrimary)),
         ],
       ),
     );

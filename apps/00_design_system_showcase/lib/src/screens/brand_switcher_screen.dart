@@ -102,8 +102,8 @@ class _BrandSwitcherScreenState extends State<BrandSwitcherScreen> {
                   ),
                   child: Text(
                     'Primary color preview',
-                    style: typography.bodyLarge
-                        .copyWith(color: colors.onPrimary),
+                    style:
+                        typography.bodyLarge.copyWith(color: colors.onPrimary),
                   ),
                 ),
                 SizedBox(height: spacing.md),
@@ -115,8 +115,8 @@ class _BrandSwitcherScreenState extends State<BrandSwitcherScreen> {
                   ),
                   child: Text(
                     'Accent color preview',
-                    style: typography.bodyLarge
-                        .copyWith(color: colors.onAccent),
+                    style:
+                        typography.bodyLarge.copyWith(color: colors.onAccent),
                   ),
                 ),
                 SizedBox(height: spacing.xl),

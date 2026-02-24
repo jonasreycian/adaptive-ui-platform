@@ -26,8 +26,7 @@ class _ReviewSubmitStepState extends State<ReviewSubmitStep> {
       children: [
         const SectionHeader(
           title: 'Review & Submit',
-          subtitle:
-              'Please review your application before submitting',
+          subtitle: 'Please review your application before submitting',
           icon: Icons.fact_check_outlined,
         ),
 
@@ -39,14 +38,10 @@ class _ReviewSubmitStepState extends State<ReviewSubmitStep> {
           onEdit: () => widget.viewModel.goToStep(0),
           rows: [
             ReviewRow(
-                label: 'Full Name',
-                value: '${app.firstName} ${app.lastName}'),
-            ReviewRow(
-                label: 'Date of Birth',
-                value: app.dateOfBirth),
+                label: 'Full Name', value: '${app.firstName} ${app.lastName}'),
+            ReviewRow(label: 'Date of Birth', value: app.dateOfBirth),
             ReviewRow(label: 'Gender', value: app.gender),
-            ReviewRow(
-                label: 'National ID', value: app.nationalId),
+            ReviewRow(label: 'National ID', value: app.nationalId),
             ReviewRow(label: 'Email', value: app.email),
             ReviewRow(label: 'Phone', value: app.phone),
             ReviewRow(
@@ -64,22 +59,15 @@ class _ReviewSubmitStepState extends State<ReviewSubmitStep> {
           stepIndex: 1,
           onEdit: () => widget.viewModel.goToStep(1),
           rows: [
-            ReviewRow(
-                label: 'Employment Type',
-                value: app.employmentType),
+            ReviewRow(label: 'Employment Type', value: app.employmentType),
             if (app.employerName.isNotEmpty)
-              ReviewRow(
-                  label: 'Employer', value: app.employerName),
+              ReviewRow(label: 'Employer', value: app.employerName),
             if (app.jobTitle.isNotEmpty)
-              ReviewRow(
-                  label: 'Job Title', value: app.jobTitle),
+              ReviewRow(label: 'Job Title', value: app.jobTitle),
             if (app.yearsEmployed.isNotEmpty)
               ReviewRow(
-                  label: 'Years Employed',
-                  value: '${app.yearsEmployed} years'),
-            ReviewRow(
-                label: 'Monthly Income',
-                value: '\$${app.monthlyIncome}'),
+                  label: 'Years Employed', value: '${app.yearsEmployed} years'),
+            ReviewRow(label: 'Monthly Income', value: '\$${app.monthlyIncome}'),
           ],
         ),
         const SizedBox(height: AppSpacing.base),
@@ -91,17 +79,14 @@ class _ReviewSubmitStepState extends State<ReviewSubmitStep> {
           stepIndex: 2,
           onEdit: () => widget.viewModel.goToStep(2),
           rows: [
-            ReviewRow(
-                label: 'Purpose', value: app.loanPurpose),
+            ReviewRow(label: 'Purpose', value: app.loanPurpose),
             ReviewRow(
               label: 'Loan Amount',
               value: widget.viewModel.formattedLoanAmount,
               highlight: true,
             ),
             ReviewRow(label: 'Tenure', value: app.loanTenure),
-            ReviewRow(
-                label: 'Collateral',
-                value: app.collateralType),
+            ReviewRow(label: 'Collateral', value: app.collateralType),
           ],
         ),
         const SizedBox(height: AppSpacing.lg),
@@ -117,25 +102,20 @@ class _ReviewSubmitStepState extends State<ReviewSubmitStep> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Declarations',
-                  style: AppTypography.titleMedium),
+              Text('Declarations', style: AppTypography.titleMedium),
               const SizedBox(height: AppSpacing.md),
               _DeclarationCheckbox(
                 value: _confirmedAccuracy,
-                onChanged: (v) =>
-                    setState(() => _confirmedAccuracy = v!),
-                label:
-                    'I confirm that all the information provided '
+                onChanged: (v) => setState(() => _confirmedAccuracy = v!),
+                label: 'I confirm that all the information provided '
                     'in this application is true, accurate, and '
                     'complete to the best of my knowledge.',
               ),
               const SizedBox(height: AppSpacing.sm),
               _DeclarationCheckbox(
                 value: _agreedToTerms,
-                onChanged: (v) =>
-                    setState(() => _agreedToTerms = v!),
-                label:
-                    'I have read and agree to the Terms & Conditions, '
+                onChanged: (v) => setState(() => _agreedToTerms = v!),
+                label: 'I have read and agree to the Terms & Conditions, '
                     'Privacy Policy, and consent to credit checks '
                     'as part of this loan application process.',
               ),
@@ -159,8 +139,7 @@ class _ReviewSubmitStepState extends State<ReviewSubmitStep> {
                   backgroundColor: AppColors.error,
                   behavior: SnackBarBehavior.floating,
                   shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(AppRadius.md),
+                    borderRadius: BorderRadius.circular(AppRadius.md),
                   ),
                 ),
               );
@@ -261,8 +240,7 @@ class _ReviewSection extends StatelessWidget {
                   children: [
                     r,
                     if (rows.last != r)
-                      const Divider(
-                          height: 1, color: AppColors.divider),
+                      const Divider(height: 1, color: AppColors.divider),
                   ],
                 )),
           ],
