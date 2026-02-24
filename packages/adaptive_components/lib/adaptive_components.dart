@@ -8,3 +8,4 @@ export 'src/components/adaptive_text_field.dart';
 export 'src/components/adaptive_dialog.dart';
 export 'src/components/adaptive_scaffold.dart';
 export 'src/components/adaptive_navigation_bar.dart';
+export 'src/components/adaptive_table.dart';
