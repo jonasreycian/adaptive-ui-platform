@@ -30,9 +30,8 @@ class _LoanDetailsStepState extends State<LoanDetailsStep> {
     final amount = double.tryParse(_amountCtrl.text.trim());
     if (amount == null || amount <= 0) return 0;
     if (_selectedTenure == null) return 0;
-    final months = int.tryParse(
-            _selectedTenure!.replaceAll(' months', '')) ??
-        0;
+    final months =
+        int.tryParse(_selectedTenure!.replaceAll(' months', '')) ?? 0;
     if (months <= 0) return 0;
     // PMT formula with 8% annual interest rate
     const annualRate = 0.08;
@@ -56,12 +55,9 @@ class _LoanDetailsStepState extends State<LoanDetailsStep> {
   void initState() {
     super.initState();
     final app = widget.viewModel.application;
-    _amountCtrl =
-        TextEditingController(text: app.loanAmount);
-    _selectedPurpose =
-        app.loanPurpose.isEmpty ? null : app.loanPurpose;
-    _selectedTenure =
-        app.loanTenure.isEmpty ? null : app.loanTenure;
+    _amountCtrl = TextEditingController(text: app.loanAmount);
+    _selectedPurpose = app.loanPurpose.isEmpty ? null : app.loanPurpose;
+    _selectedTenure = app.loanTenure.isEmpty ? null : app.loanTenure;
     _selectedCollateral =
         app.collateralType.isEmpty ? null : app.collateralType;
   }
@@ -110,13 +106,11 @@ class _LoanDetailsStepState extends State<LoanDetailsStep> {
                         child: Text(p),
                       ))
                   .toList(),
-              onChanged: (v) =>
-                  setState(() => _selectedPurpose = v),
-              validator: (v) =>
-                  v == null ? 'Loan purpose is required' : null,
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.lightbulb_outline,
-                    color: AppColors.primary),
+              onChanged: (v) => setState(() => _selectedPurpose = v),
+              validator: (v) => v == null ? 'Loan purpose is required' : null,
+              decoration: InputDecoration(
+                prefixIcon:
+                    Icon(Icons.lightbulb_outline, color: AppColors.primary),
               ),
             ),
           ),
@@ -128,17 +122,15 @@ class _LoanDetailsStepState extends State<LoanDetailsStep> {
             isRequired: true,
             child: TextFormField(
               controller: _amountCtrl,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: '10,000.00',
-                prefixIcon: Icon(Icons.attach_money,
-                    color: AppColors.primary),
+                prefixIcon: Icon(Icons.attach_money, color: AppColors.primary),
                 prefixText: '\$ ',
               ),
-              keyboardType: const TextInputType.numberWithOptions(
-                  decimal: true),
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: true),
               inputFormatters: [
-                FilteringTextInputFormatter.allow(
-                    RegExp(r'[\d.]')),
+                FilteringTextInputFormatter.allow(RegExp(r'[\d.]')),
               ],
               onChanged: (_) => setState(() {}),
               validator: (value) {
@@ -178,11 +170,10 @@ class _LoanDetailsStepState extends State<LoanDetailsStep> {
               onChanged: (v) {
                 setState(() => _selectedTenure = v);
               },
-              validator: (v) =>
-                  v == null ? 'Loan tenure is required' : null,
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.schedule_outlined,
-                    color: AppColors.primary),
+              validator: (v) => v == null ? 'Loan tenure is required' : null,
+              decoration: InputDecoration(
+                prefixIcon:
+                    Icon(Icons.schedule_outlined, color: AppColors.primary),
               ),
             ),
           ),
@@ -202,13 +193,12 @@ class _LoanDetailsStepState extends State<LoanDetailsStep> {
                         child: Text(c),
                       ))
                   .toList(),
-              onChanged: (v) =>
-                  setState(() => _selectedCollateral = v),
+              onChanged: (v) => setState(() => _selectedCollateral = v),
               validator: (v) =>
                   v == null ? 'Collateral type is required' : null,
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.security_outlined,
-                    color: AppColors.primary),
+              decoration: InputDecoration(
+                prefixIcon:
+                    Icon(Icons.security_outlined, color: AppColors.primary),
               ),
             ),
           ),
@@ -218,12 +208,11 @@ class _LoanDetailsStepState extends State<LoanDetailsStep> {
           AnimatedSize(
             duration: AppMotion.normal,
             curve: AppMotion.decelerate,
-            child: _amountCtrl.text.isNotEmpty &&
-                    _selectedTenure != null
+            child: _amountCtrl.text.isNotEmpty && _selectedTenure != null
                 ? Container(
                     padding: const EdgeInsets.all(AppSpacing.base),
                     decoration: BoxDecoration(
-                      gradient: const LinearGradient(
+                      gradient: LinearGradient(
                         colors: [
                           AppColors.primary,
                           AppColors.primaryLight,
@@ -231,12 +220,11 @@ class _LoanDetailsStepState extends State<LoanDetailsStep> {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
-                      borderRadius:
-                          BorderRadius.circular(AppRadius.lg),
+                      borderRadius: BorderRadius.circular(AppRadius.lg),
                     ),
                     child: Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.calculate_outlined,
                           color: AppColors.accent,
                           size: 40,
@@ -244,30 +232,25 @@ class _LoanDetailsStepState extends State<LoanDetailsStep> {
                         const SizedBox(width: AppSpacing.md),
                         Expanded(
                           child: Column(
-                            crossAxisAlignment:
-                                CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 'Estimated Monthly Payment',
-                                style:
-                                    AppTypography.labelSmall.copyWith(
-                                  color: AppColors.textOnPrimary
-                                      .withOpacity(0.7),
-                                ),
+                                style: AppTypography.labelSmall.copyWith(
+                                    color:
+                                        AppColors.textOnPrimary.withAlpha(100)),
                               ),
                               Text(
                                 _formattedEstimate,
-                                style:
-                                    AppTypography.displayMedium.copyWith(
+                                style: AppTypography.displayMedium.copyWith(
                                   color: AppColors.accent,
                                 ),
                               ),
                               Text(
                                 'Based on ~8% annual interest rate',
-                                style:
-                                    AppTypography.labelSmall.copyWith(
-                                  color: AppColors.textOnPrimary
-                                      .withOpacity(0.5),
+                                style: AppTypography.labelSmall.copyWith(
+                                  color:
+                                      AppColors.textOnPrimary.withOpacity(0.5),
                                   fontSize: 10,
                                 ),
                               ),

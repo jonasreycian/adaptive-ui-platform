@@ -71,7 +71,7 @@ class SuccessScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(AppSpacing.lg),
               decoration: BoxDecoration(
-                gradient: const LinearGradient(
+                gradient: LinearGradient(
                   colors: [AppColors.primary, AppColors.primaryLight],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -149,38 +149,33 @@ class SuccessScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("What's Next?",
-                      style: AppTypography.titleMedium),
+                  Text("What's Next?", style: AppTypography.titleMedium),
                   const SizedBox(height: AppSpacing.md),
                   _NextStep(
                     step: '01',
                     title: 'Application Review',
-                    description:
-                        'Our team will review your application within '
+                    description: 'Our team will review your application within '
                         '1–2 business days.',
                   ),
                   const SizedBox(height: AppSpacing.sm),
                   _NextStep(
                     step: '02',
                     title: 'Document Verification',
-                    description:
-                        'You may be contacted to provide additional '
+                    description: 'You may be contacted to provide additional '
                         'supporting documents.',
                   ),
                   const SizedBox(height: AppSpacing.sm),
                   _NextStep(
                     step: '03',
                     title: 'Credit Assessment',
-                    description:
-                        'A credit check will be conducted based on '
+                    description: 'A credit check will be conducted based on '
                         'your consent.',
                   ),
                   const SizedBox(height: AppSpacing.sm),
                   _NextStep(
                     step: '04',
                     title: 'Decision & Disbursement',
-                    description:
-                        'You will receive the decision via email. '
+                    description: 'You will receive the decision via email. '
                         'Approved loans are disbursed within 3–5 '
                         'business days.',
                   ),
@@ -265,8 +260,7 @@ class _NextStep extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(title, style: AppTypography.labelLarge),
-              Text(description,
-                  style: AppTypography.bodyMedium),
+              Text(description, style: AppTypography.bodyMedium),
             ],
           ),
         ),

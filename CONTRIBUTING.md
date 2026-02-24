@@ -26,6 +26,9 @@ melos bootstrap
 
 ```
 adaptive-ui-platform/
+├── app/
+│   ├── 00_design_system_showcase/      # Demo app showcasing components and tokens
+│   └── 01_loan_origination_system/     # Example feature app using the design system
 ├── packages/
 │   ├── core_engine/           # Design tokens + theme
 │   ├── branding_engine/       # Brand config + registry

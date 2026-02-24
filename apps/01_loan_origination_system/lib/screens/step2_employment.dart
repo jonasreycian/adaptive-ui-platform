@@ -12,12 +12,10 @@ class EmploymentDetailsStep extends StatefulWidget {
   const EmploymentDetailsStep({super.key, required this.viewModel});
 
   @override
-  State<EmploymentDetailsStep> createState() =>
-      _EmploymentDetailsStepState();
+  State<EmploymentDetailsStep> createState() => _EmploymentDetailsStepState();
 }
 
-class _EmploymentDetailsStepState
-    extends State<EmploymentDetailsStep> {
+class _EmploymentDetailsStepState extends State<EmploymentDetailsStep> {
   final _formKey = GlobalKey<FormState>();
 
   late TextEditingController _employerCtrl;
@@ -37,14 +35,10 @@ class _EmploymentDetailsStepState
   void initState() {
     super.initState();
     final app = widget.viewModel.application;
-    _employerCtrl =
-        TextEditingController(text: app.employerName);
-    _jobTitleCtrl =
-        TextEditingController(text: app.jobTitle);
-    _incomeCtrl =
-        TextEditingController(text: app.monthlyIncome);
-    _yearsCtrl =
-        TextEditingController(text: app.yearsEmployed);
+    _employerCtrl = TextEditingController(text: app.employerName);
+    _jobTitleCtrl = TextEditingController(text: app.jobTitle);
+    _incomeCtrl = TextEditingController(text: app.monthlyIncome);
+    _yearsCtrl = TextEditingController(text: app.yearsEmployed);
     _selectedEmploymentType =
         app.employmentType.isEmpty ? null : app.employmentType;
   }
@@ -101,7 +95,7 @@ class _EmploymentDetailsStepState
               },
               validator: (v) =>
                   v == null ? 'Employment type is required' : null,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 prefixIcon: Icon(Icons.business_center_outlined,
                     color: AppColors.primary),
               ),
@@ -138,17 +132,14 @@ class _EmploymentDetailsStepState
                                     _selectedEmploymentType == 'Self-Employed'
                                 ? 'e.g. Acme Corp'
                                 : 'e.g. ABC Company',
-                            prefixIcon: const Icon(
-                                Icons.corporate_fare_outlined,
+                            prefixIcon: Icon(Icons.corporate_fare_outlined,
                                 color: AppColors.primary),
                           ),
-                          textCapitalization:
-                              TextCapitalization.words,
+                          textCapitalization: TextCapitalization.words,
                           validator: _showEmployerFields
-                              ? (v) =>
-                                  (v == null || v.trim().isEmpty)
-                                      ? 'Employer name is required'
-                                      : null
+                              ? (v) => (v == null || v.trim().isEmpty)
+                                  ? 'Employer name is required'
+                                  : null
                               : null,
                         ),
                       ),
@@ -161,8 +152,7 @@ class _EmploymentDetailsStepState
                         isRequired: false,
                         child: TextFormField(
                           controller: _yearsCtrl,
-                          decoration: const InputDecoration(
-                              hintText: 'e.g. 3'),
+                          decoration: const InputDecoration(hintText: 'e.g. 3'),
                           keyboardType: TextInputType.number,
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly,
@@ -179,17 +169,16 @@ class _EmploymentDetailsStepState
                   isRequired: _showEmployerFields,
                   child: TextFormField(
                     controller: _jobTitleCtrl,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       hintText: 'e.g. Software Engineer',
-                      prefixIcon: Icon(Icons.badge_outlined,
-                          color: AppColors.primary),
+                      prefixIcon:
+                          Icon(Icons.badge_outlined, color: AppColors.primary),
                     ),
                     textCapitalization: TextCapitalization.words,
                     validator: _showEmployerFields
-                        ? (v) =>
-                            (v == null || v.trim().isEmpty)
-                                ? 'Job title is required'
-                                : null
+                        ? (v) => (v == null || v.trim().isEmpty)
+                            ? 'Job title is required'
+                            : null
                         : null,
                   ),
                 ),
@@ -205,17 +194,15 @@ class _EmploymentDetailsStepState
             isRequired: true,
             child: TextFormField(
               controller: _incomeCtrl,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: '0.00',
-                prefixIcon: Icon(Icons.attach_money,
-                    color: AppColors.primary),
+                prefixIcon: Icon(Icons.attach_money, color: AppColors.primary),
                 prefixText: '\$ ',
               ),
-              keyboardType: const TextInputType.numberWithOptions(
-                  decimal: true),
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: true),
               inputFormatters: [
-                FilteringTextInputFormatter.allow(
-                    RegExp(r'[\d.]')),
+                FilteringTextInputFormatter.allow(RegExp(r'[\d.]')),
               ],
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
@@ -235,16 +222,13 @@ class _EmploymentDetailsStepState
           Container(
             padding: const EdgeInsets.all(AppSpacing.md),
             decoration: BoxDecoration(
-              color: AppColors.info.withOpacity(0.08),
-              borderRadius: BorderRadius.circular(AppRadius.md),
-              border: Border.all(
-                  color: AppColors.info.withOpacity(0.3)),
-            ),
+                color: AppColors.info.withAlpha(30),
+                borderRadius: BorderRadius.circular(AppRadius.md),
+                border: Border.all(color: AppColors.info.withAlpha(100))),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Icon(Icons.info_outline,
-                    color: AppColors.info, size: 18),
+                const Icon(Icons.info_outline, color: AppColors.info, size: 18),
                 const SizedBox(width: AppSpacing.sm),
                 Expanded(
                   child: Text(

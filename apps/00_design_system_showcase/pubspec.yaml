@@ -11,13 +11,13 @@ dependencies:
   flutter:
     sdk: flutter
   core_engine:
-    path: ../core_engine
+    path: ../../packages/core_engine
   branding_engine:
-    path: ../branding_engine
+    path: ../../packages/branding_engine
   adaptive_components:
-    path: ../adaptive_components
+    path: ../../packages/adaptive_components
   dashboard_framework:
-    path: ../dashboard_framework
+    path: ../../packages/dashboard_framework
 
 dev_dependencies:
   flutter_test:

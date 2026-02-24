@@ -64,8 +64,7 @@ class StepProgressIndicator extends StatelessWidget {
                       : isCompleted
                           ? AppColors.primaryLight
                           : AppColors.textDisabled,
-                  fontWeight:
-                      isActive ? FontWeight.w600 : FontWeight.w400,
+                  fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
                   fontSize: 10,
                 ),
                 maxLines: 1,
@@ -124,7 +123,7 @@ class _StepCircle extends StatelessWidget {
       ),
       child: Center(
         child: isCompleted
-            ? const Icon(Icons.check, size: 16, color: AppColors.textOnPrimary)
+            ? Icon(Icons.check, size: 16, color: AppColors.textOnPrimary)
             : Text(
                 '$index',
                 style: AppTypography.labelLarge.copyWith(
@@ -165,8 +164,7 @@ class SectionHeader extends StatelessWidget {
               padding: const EdgeInsets.all(AppSpacing.sm),
               decoration: BoxDecoration(
                 color: AppColors.primary.withOpacity(0.1),
-                borderRadius:
-                    BorderRadius.circular(AppRadius.md),
+                borderRadius: BorderRadius.circular(AppRadius.md),
               ),
               child: Icon(
                 icon,
@@ -181,8 +179,7 @@ class SectionHeader extends StatelessWidget {
                 children: [
                   Text(title, style: AppTypography.titleLarge),
                   if (subtitle != null)
-                    Text(subtitle!,
-                        style: AppTypography.bodyMedium),
+                    Text(subtitle!, style: AppTypography.bodyMedium),
                 ],
               ),
             ),
@@ -222,7 +219,7 @@ class AppFormField extends StatelessWidget {
             style: AppTypography.labelLarge,
             children: isRequired
                 ? [
-                    const TextSpan(
+                    TextSpan(
                       text: ' *',
                       style: TextStyle(color: AppColors.error),
                     ),

@@ -30,7 +30,7 @@ class _LoanRecord {
   final DateTime dateApplied;
 }
 
-const _sampleRecords = <_LoanRecord>[
+final _sampleRecords = <_LoanRecord>[
   _LoanRecord(
     reference: 'LOS-2024001',
     applicantName: 'Alice Johnson',
@@ -180,8 +180,7 @@ class LoanApplicationsScreen extends StatefulWidget {
   const LoanApplicationsScreen({super.key});
 
   @override
-  State<LoanApplicationsScreen> createState() =>
-      _LoanApplicationsScreenState();
+  State<LoanApplicationsScreen> createState() => _LoanApplicationsScreenState();
 }
 
 class _LoanApplicationsScreenState extends State<LoanApplicationsScreen> {
@@ -271,14 +270,11 @@ class _LoanApplicationsScreenState extends State<LoanApplicationsScreen> {
   static String _formatAmount(double amount) =>
       NumberFormat.currency(symbol: '\$', decimalDigits: 0).format(amount);
 
-  static String _formatDate(DateTime d) =>
-      DateFormat('yyyy-MM-dd').format(d);
+  static String _formatDate(DateTime d) => DateFormat('yyyy-MM-dd').format(d);
 
   List<_LoanRecord> get _filteredRows {
     if (_statusFilter == null) return _sampleRecords;
-    return _sampleRecords
-        .where((r) => r.status == _statusFilter)
-        .toList();
+    return _sampleRecords.where((r) => r.status == _statusFilter).toList();
   }
 
   // ── Build ─────────────────────────────────────────────────────────────────
@@ -294,7 +290,7 @@ class _LoanApplicationsScreenState extends State<LoanApplicationsScreen> {
               color: AppColors.accent,
               borderRadius: BorderRadius.circular(AppRadius.sm),
             ),
-            child: const Icon(
+            child: Icon(
               Icons.account_balance,
               color: AppColors.textOnAccent,
               size: 20,
@@ -362,10 +358,9 @@ class _LoanApplicationsScreenState extends State<LoanApplicationsScreen> {
             label: 'Under Review',
             selected: _statusFilter == _LoanStatus.underReview,
             onTap: () => setState(
-              () => _statusFilter =
-                  _statusFilter == _LoanStatus.underReview
-                      ? null
-                      : _LoanStatus.underReview,
+              () => _statusFilter = _statusFilter == _LoanStatus.underReview
+                  ? null
+                  : _LoanStatus.underReview,
             ),
             color: _statusColor(_LoanStatus.underReview),
           ),

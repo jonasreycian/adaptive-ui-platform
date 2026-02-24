@@ -44,16 +44,22 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
     _cityCtrl = TextEditingController(text: app.city);
     _stateCtrl = TextEditingController(text: app.state);
     _postalCtrl = TextEditingController(text: app.postalCode);
-    _selectedGender =
-        app.gender.isEmpty ? null : app.gender;
+    _selectedGender = app.gender.isEmpty ? null : app.gender;
   }
 
   @override
   void dispose() {
     for (final c in [
-      _firstNameCtrl, _lastNameCtrl, _dobCtrl, _nationalIdCtrl,
-      _emailCtrl, _phoneCtrl, _addressCtrl, _cityCtrl,
-      _stateCtrl, _postalCtrl,
+      _firstNameCtrl,
+      _lastNameCtrl,
+      _dobCtrl,
+      _nationalIdCtrl,
+      _emailCtrl,
+      _phoneCtrl,
+      _addressCtrl,
+      _cityCtrl,
+      _stateCtrl,
+      _postalCtrl,
     ]) {
       c.dispose();
     }
@@ -89,7 +95,7 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
       lastDate: maxDate,
       builder: (context, child) => Theme(
         data: Theme.of(context).copyWith(
-          colorScheme: const ColorScheme.light(
+          colorScheme: ColorScheme.light(
             primary: AppColors.primary,
             onPrimary: AppColors.textOnPrimary,
             secondary: AppColors.accent,
@@ -126,8 +132,7 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
                   isRequired: true,
                   child: TextFormField(
                     controller: _firstNameCtrl,
-                    decoration:
-                        const InputDecoration(hintText: 'John'),
+                    decoration: const InputDecoration(hintText: 'John'),
                     textCapitalization: TextCapitalization.words,
                     validator: _requiredValidator('First name'),
                   ),
@@ -140,8 +145,7 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
                   isRequired: true,
                   child: TextFormField(
                     controller: _lastNameCtrl,
-                    decoration:
-                        const InputDecoration(hintText: 'Doe'),
+                    decoration: const InputDecoration(hintText: 'Doe'),
                     textCapitalization: TextCapitalization.words,
                     validator: _requiredValidator('Last name'),
                   ),
@@ -161,7 +165,7 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
                   child: TextFormField(
                     controller: _dobCtrl,
                     readOnly: true,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       hintText: 'YYYY-MM-DD',
                       suffixIcon: Icon(Icons.calendar_today,
                           size: 18, color: AppColors.primary),
@@ -185,10 +189,8 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
                               child: Text(g),
                             ))
                         .toList(),
-                    onChanged: (v) =>
-                        setState(() => _selectedGender = v),
-                    validator: (v) =>
-                        v == null ? 'Gender is required' : null,
+                    onChanged: (v) => setState(() => _selectedGender = v),
+                    validator: (v) => v == null ? 'Gender is required' : null,
                     decoration: const InputDecoration(),
                   ),
                 ),
@@ -203,10 +205,10 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
             isRequired: true,
             child: TextFormField(
               controller: _nationalIdCtrl,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: 'e.g. 123-45-6789',
-                prefixIcon: Icon(Icons.badge_outlined,
-                    color: AppColors.primary),
+                prefixIcon:
+                    Icon(Icons.badge_outlined, color: AppColors.primary),
               ),
               validator: _requiredValidator('National ID'),
             ),
@@ -222,10 +224,10 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
                   isRequired: true,
                   child: TextFormField(
                     controller: _emailCtrl,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       hintText: 'john@example.com',
-                      prefixIcon: Icon(Icons.email_outlined,
-                          color: AppColors.primary),
+                      prefixIcon:
+                          Icon(Icons.email_outlined, color: AppColors.primary),
                     ),
                     keyboardType: TextInputType.emailAddress,
                     validator: _emailValidator,
@@ -239,10 +241,10 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
                   isRequired: true,
                   child: TextFormField(
                     controller: _phoneCtrl,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       hintText: '+1 555 0100',
-                      prefixIcon: Icon(Icons.phone_outlined,
-                          color: AppColors.primary),
+                      prefixIcon:
+                          Icon(Icons.phone_outlined, color: AppColors.primary),
                     ),
                     keyboardType: TextInputType.phone,
                     inputFormatters: [
@@ -268,10 +270,10 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
             isRequired: true,
             child: TextFormField(
               controller: _addressCtrl,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: '123 Main Street, Apt 4B',
-                prefixIcon: Icon(Icons.location_on_outlined,
-                    color: AppColors.primary),
+                prefixIcon:
+                    Icon(Icons.location_on_outlined, color: AppColors.primary),
               ),
               textCapitalization: TextCapitalization.words,
               validator: _requiredValidator('Address'),
@@ -288,8 +290,7 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
                   isRequired: true,
                   child: TextFormField(
                     controller: _cityCtrl,
-                    decoration:
-                        const InputDecoration(hintText: 'New York'),
+                    decoration: const InputDecoration(hintText: 'New York'),
                     textCapitalization: TextCapitalization.words,
                     validator: _requiredValidator('City'),
                   ),
@@ -302,8 +303,7 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
                   isRequired: true,
                   child: TextFormField(
                     controller: _stateCtrl,
-                    decoration:
-                        const InputDecoration(hintText: 'NY'),
+                    decoration: const InputDecoration(hintText: 'NY'),
                     textCapitalization: TextCapitalization.characters,
                     inputFormatters: [
                       LengthLimitingTextInputFormatter(3),
@@ -319,8 +319,7 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
                   isRequired: true,
                   child: TextFormField(
                     controller: _postalCtrl,
-                    decoration:
-                        const InputDecoration(hintText: '10001'),
+                    decoration: const InputDecoration(hintText: '10001'),
                     keyboardType: TextInputType.number,
                     inputFormatters: [
                       FilteringTextInputFormatter.digitsOnly,
@@ -348,10 +347,8 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
   // ---------------------------------------------------------------------------
   // Validators
   // ---------------------------------------------------------------------------
-  FormFieldValidator<String> _requiredValidator(String field) =>
-      (value) => (value == null || value.trim().isEmpty)
-          ? '$field is required'
-          : null;
+  FormFieldValidator<String> _requiredValidator(String field) => (value) =>
+      (value == null || value.trim().isEmpty) ? '$field is required' : null;
 
   String? _emailValidator(String? value) {
     if (value == null || value.trim().isEmpty) {

@@ -81,7 +81,7 @@ class _LoanApplicationShell extends StatelessWidget {
             color: AppColors.accent,
             borderRadius: BorderRadius.circular(AppRadius.sm),
           ),
-          child: const Icon(
+          child: Icon(
             Icons.account_balance,
             color: AppColors.textOnAccent,
             size: 20,
@@ -205,9 +205,9 @@ class _Sidebar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: AppColors.primary,
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Color(0x1A000000),
             blurRadius: 8,
@@ -229,7 +229,7 @@ class _Sidebar extends StatelessWidget {
                     color: AppColors.accent,
                     borderRadius: BorderRadius.circular(AppRadius.md),
                   ),
-                  child: const Icon(
+                  child: Icon(
                     Icons.account_balance,
                     color: AppColors.textOnAccent,
                     size: 24,
@@ -257,8 +257,7 @@ class _Sidebar extends StatelessWidget {
           // Steps list
           Expanded(
             child: ListView.builder(
-              padding:
-                  const EdgeInsets.symmetric(vertical: AppSpacing.md),
+              padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
               itemCount: _steps.length,
               itemBuilder: (_, index) {
                 final step = _steps[index];
@@ -298,14 +297,11 @@ class _Sidebar extends StatelessWidget {
                 ),
                 const SizedBox(height: AppSpacing.xs),
                 ClipRRect(
-                  borderRadius:
-                      BorderRadius.circular(AppRadius.full),
+                  borderRadius: BorderRadius.circular(AppRadius.full),
                   child: LinearProgressIndicator(
                     value: viewModel.progressFraction,
-                    backgroundColor:
-                        AppColors.textOnPrimary.withOpacity(0.2),
-                    valueColor: const AlwaysStoppedAnimation<Color>(
-                        AppColors.accent),
+                    backgroundColor: AppColors.textOnPrimary.withOpacity(0.2),
+                    valueColor: AlwaysStoppedAnimation<Color>(AppColors.accent),
                     minHeight: 6,
                   ),
                 ),
@@ -323,9 +319,7 @@ class _StepMeta {
   final String subtitle;
   final IconData icon;
   const _StepMeta(
-      {required this.label,
-      required this.subtitle,
-      required this.icon});
+      {required this.label, required this.subtitle, required this.icon});
 }
 
 class _SidebarStepTile extends StatelessWidget {
@@ -356,8 +350,7 @@ class _SidebarStepTile extends StatelessWidget {
             : Colors.transparent,
         borderRadius: BorderRadius.circular(AppRadius.md),
         border: isActive
-            ? Border.all(
-                color: AppColors.accent.withOpacity(0.5))
+            ? Border.all(color: AppColors.accent.withOpacity(0.5))
             : null,
       ),
       child: ListTile(
@@ -387,8 +380,7 @@ class _SidebarStepTile extends StatelessWidget {
           ),
           child: Center(
             child: isCompleted
-                ? const Icon(Icons.check,
-                    size: 14, color: AppColors.textOnAccent)
+                ? Icon(Icons.check, size: 14, color: AppColors.textOnAccent)
                 : Text(
                     '${index + 1}',
                     style: AppTypography.labelSmall.copyWith(
