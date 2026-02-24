@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:core_engine/core_engine.dart';
+import 'package:adaptive_components/adaptive_components.dart';
 
 import '../theme/loan_theme.dart';
 import '../viewmodels/loan_form_viewmodel.dart';
@@ -168,29 +169,25 @@ class _ReviewSubmitStepState extends State<ReviewSubmitStep> {
     BuildContext context,
     LoanFormViewModel viewModel,
   ) async {
-    final confirmed = await showDialog<bool>(
+    final confirmed = await AdaptiveDialog.show<bool>(
       context: context,
-      builder: (ctx) => AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppRadius.lg),
-        ),
-        title: const Text('Submit Application?'),
-        content: const Text(
-          'Once submitted, your loan application will be reviewed '
-          'by our team. You will receive a confirmation email within '
-          '1-2 business days.\n\nDo you wish to proceed?',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(ctx).pop(false),
-            child: const Text('Cancel'),
-          ),
-          ElevatedButton(
-            onPressed: () => Navigator.of(ctx).pop(true),
-            child: const Text('Submit'),
-          ),
-        ],
+      title: 'Submit Application?',
+      content: const Text(
+        'Once submitted, your loan application will be reviewed '
+        'by our team. You will receive a confirmation email within '
+        '1-2 business days.\n\nDo you wish to proceed?',
       ),
+      actions: [
+        AdaptiveButton(
+          label: 'Cancel',
+          variant: AdaptiveButtonVariant.outlined,
+          onPressed: () => Navigator.of(context).pop(false),
+        ),
+        AdaptiveButton(
+          label: 'Submit',
+          onPressed: () => Navigator.of(context).pop(true),
+        ),
+      ],
     );
     if (confirmed == true) {
       viewModel.submit();

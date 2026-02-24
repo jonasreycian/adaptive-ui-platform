@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:core_engine/core_engine.dart';
+import 'package:adaptive_components/adaptive_components.dart';
 
 import '../theme/loan_theme.dart';
 import '../viewmodels/loan_form_viewmodel.dart';
@@ -123,17 +124,17 @@ class SuccessScreen extends StatelessWidget {
               runSpacing: AppSpacing.sm,
               alignment: WrapAlignment.center,
               children: [
-                InfoChip(
+                AdaptiveInfoChip(
                   label: viewModel.formattedLoanAmount,
                   icon: Icons.attach_money,
                   color: colors.primary,
                 ),
-                InfoChip(
+                AdaptiveInfoChip(
                   label: app.loanPurpose,
                   icon: Icons.lightbulb_outline,
                   color: LoanColors.primaryLight,
                 ),
-                InfoChip(
+                AdaptiveInfoChip(
                   label: app.loanTenure,
                   icon: Icons.schedule,
                   color: LoanColors.primaryLight,

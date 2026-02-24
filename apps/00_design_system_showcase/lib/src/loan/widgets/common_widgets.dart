@@ -4,150 +4,6 @@ import 'package:adaptive_components/adaptive_components.dart';
 import '../theme/loan_theme.dart';
 
 // ---------------------------------------------------------------------------
-// Step Progress Indicator
-// ---------------------------------------------------------------------------
-class StepProgressIndicator extends StatelessWidget {
-  final int currentStep;
-  final int totalSteps;
-  final List<String> labels;
-
-  const StepProgressIndicator({
-    super.key,
-    required this.currentStep,
-    required this.totalSteps,
-    required this.labels,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final tokens = TokenResolver.of(context);
-    final colors = tokens.colors;
-    final typography = tokens.typography;
-
-    return Column(
-      children: [
-        Row(
-          children: List.generate(totalSteps, (index) {
-            final isCompleted = index < currentStep;
-            final isActive = index == currentStep;
-            return Expanded(
-              child: Row(
-                children: [
-                  _StepCircle(
-                    index: index + 1,
-                    isCompleted: isCompleted,
-                    isActive: isActive,
-                  ),
-                  if (index < totalSteps - 1)
-                    Expanded(
-                      child: AnimatedContainer(
-                        duration: AppMotion.normal,
-                        curve: AppMotion.decelerate,
-                        height: 2,
-                        color: isCompleted
-                            ? colors.primary
-                            : LoanColors.border,
-                      ),
-                    ),
-                ],
-              ),
-            );
-          }),
-        ),
-        const SizedBox(height: AppSpacing.sm),
-        Row(
-          children: List.generate(totalSteps, (index) {
-            final isCompleted = index < currentStep;
-            final isActive = index == currentStep;
-            return Expanded(
-              child: Text(
-                labels[index],
-                textAlign: TextAlign.center,
-                style: typography.labelSmall.copyWith(
-                  color: isActive
-                      ? colors.primary
-                      : isCompleted
-                          ? LoanColors.primaryLight
-                          : LoanColors.textDisabled,
-                  fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
-                  fontSize: 10,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            );
-          }),
-        ),
-      ],
-    );
-  }
-}
-
-class _StepCircle extends StatelessWidget {
-  final int index;
-  final bool isCompleted;
-  final bool isActive;
-
-  const _StepCircle({
-    required this.index,
-    required this.isCompleted,
-    required this.isActive,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final tokens = TokenResolver.of(context);
-    final colors = tokens.colors;
-    final typography = tokens.typography;
-
-    return AnimatedContainer(
-      duration: AppMotion.normal,
-      curve: AppMotion.decelerate,
-      width: 32,
-      height: 32,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: isCompleted
-            ? colors.primary
-            : isActive
-                ? colors.accent
-                : colors.surface,
-        border: Border.all(
-          color: isCompleted
-              ? colors.primary
-              : isActive
-                  ? colors.accent
-                  : LoanColors.border,
-          width: isActive ? 2 : 1,
-        ),
-        boxShadow: isActive
-            ? [
-                BoxShadow(
-                  color: colors.accent.withOpacity(50 / 255),
-                  blurRadius: 8,
-                  offset: const Offset(0, 2),
-                ),
-              ]
-            : null,
-      ),
-      child: Center(
-        child: isCompleted
-            ? Icon(Icons.check, size: 16, color: colors.onPrimary)
-            : Text(
-                '$index',
-                style: typography.labelLarge.copyWith(
-                  color: isActive
-                      ? colors.onAccent
-                      : LoanColors.textDisabled,
-                  fontSize: 13,
-                ),
-              ),
-      ),
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
 // Section Header
 // ---------------------------------------------------------------------------
 class SectionHeader extends StatelessWidget {
@@ -241,8 +97,8 @@ class AppFormField extends StatelessWidget {
         RichText(
           text: TextSpan(
             text: label,
-            style: typography.labelLarge
-                .copyWith(color: colors.textPrimary, fontWeight: FontWeight.w600),
+            style: typography.labelLarge.copyWith(
+                color: colors.textPrimary, fontWeight: FontWeight.w600),
             children: isRequired
                 ? [
                     TextSpan(
@@ -301,8 +157,7 @@ class ReviewRow extends StatelessWidget {
                   ? typography.titleMedium.copyWith(
                       color: colors.primary,
                     )
-                  : typography.bodyLarge
-                      .copyWith(color: colors.textPrimary),
+                  : typography.bodyLarge.copyWith(color: colors.textPrimary),
               textAlign: TextAlign.right,
             ),
           ),
@@ -365,51 +220,3 @@ class NavigationButtons extends StatelessWidget {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Info Chip
-// ---------------------------------------------------------------------------
-class InfoChip extends StatelessWidget {
-  final String label;
-  final IconData icon;
-  final Color? color;
-
-  const InfoChip({
-    super.key,
-    required this.label,
-    required this.icon,
-    this.color,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = TokenResolver.of(context).colors;
-    final typography = TokenResolver.of(context).typography;
-    final chipColor = color ?? colors.primary;
-
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.md,
-        vertical: AppSpacing.xs,
-      ),
-      decoration: BoxDecoration(
-        color: chipColor.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(AppRadius.full),
-        border: Border.all(color: chipColor.withOpacity(0.3)),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 14, color: chipColor),
-          const SizedBox(width: AppSpacing.xs),
-          Text(
-            label,
-            style: typography.labelSmall.copyWith(
-              color: chipColor,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:core_engine/core_engine.dart';
+import 'package:adaptive_components/adaptive_components.dart';
 
 import '../theme/loan_theme.dart';
 import '../viewmodels/loan_form_viewmodel.dart';
@@ -93,7 +94,7 @@ class _LoanApplicationShell extends StatelessWidget {
               horizontal: AppSpacing.base,
               vertical: AppSpacing.md,
             ),
-            child: InfoChip(
+            child: AdaptiveInfoChip(
               label: 'Step ${viewModel.currentStep + 1} of '
                   '${LoanFormViewModel.totalSteps}',
               icon: Icons.linear_scale,
@@ -152,7 +153,7 @@ class _NarrowLayout extends StatelessWidget {
             AppSpacing.base,
             AppSpacing.base,
           ),
-          child: StepProgressIndicator(
+          child: AdaptiveStepIndicator(
             currentStep: viewModel.currentStep,
             totalSteps: LoanFormViewModel.totalSteps,
             labels: const [
