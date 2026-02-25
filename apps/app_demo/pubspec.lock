@@ -28,7 +28,7 @@ packages:
   ckgroup_core_engine:
     dependency: "direct main"
     description:
-      path: "../packages/ckgroup_core_engine"
+      path: "../../packages/ckgroup_core_engine"
       relative: true
     source: path
     version: "0.1.0"

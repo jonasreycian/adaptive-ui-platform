@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   ckgroup_core_engine:
-    path: ../packages/ckgroup_core_engine
+    path: ../../packages/ckgroup_core_engine
   stacked: ^3.4.4
   intl: ^0.19.0
 
