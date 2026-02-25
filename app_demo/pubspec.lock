@@ -4,7 +4,7 @@ packages:
   adaptive_components:
     dependency: "direct main"
     description:
-      path: "../../packages/adaptive_components"
+      path: "../packages/adaptive_components"
       relative: true
     source: path
     version: "0.1.0"
@@ -27,7 +27,7 @@ packages:
   branding_engine:
     dependency: "direct main"
     description:
-      path: "../../packages/branding_engine"
+      path: "../packages/branding_engine"
       relative: true
     source: path
     version: "0.1.0"
@@ -58,14 +58,14 @@ packages:
   core_engine:
     dependency: "direct main"
     description:
-      path: "../../packages/core_engine"
+      path: "../packages/core_engine"
       relative: true
     source: path
     version: "0.1.0"
   dashboard_framework:
     dependency: "direct main"
     description:
-      path: "../../packages/dashboard_framework"
+      path: "../packages/dashboard_framework"
       relative: true
     source: path
     version: "0.1.0"

@@ -11,13 +11,13 @@ dependencies:
   flutter:
     sdk: flutter
   core_engine:
-    path: ../../packages/core_engine
+    path: ../packages/core_engine
   branding_engine:
-    path: ../../packages/branding_engine
+    path: ../packages/branding_engine
   adaptive_components:
-    path: ../../packages/adaptive_components
+    path: ../packages/adaptive_components
   dashboard_framework:
-    path: ../../packages/dashboard_framework
+    path: ../packages/dashboard_framework
   stacked: ^3.4.4
   intl: ^0.19.0
 
