@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:core_engine/core_engine.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 
 import '../models/loan_application.dart';
 import '../theme/loan_theme.dart';
@@ -85,7 +85,7 @@ class _EmploymentDetailsStepState extends State<EmploymentDetailsStep> {
             label: 'Employment Type',
             isRequired: true,
             child: DropdownButtonFormField<String>(
-              value: _selectedEmploymentType,
+              initialValue: _selectedEmploymentType,
               hint: const Text('Select employment type'),
               items: employmentTypeOptions
                   .map((e) => DropdownMenuItem(

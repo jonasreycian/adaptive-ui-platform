@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:adaptive_components/adaptive_components.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 
 import '../models/loan_application.dart';
 

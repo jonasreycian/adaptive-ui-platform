@@ -10,88 +10,13 @@ permissions:
   contents: read
 
 jobs:
-  # ── core_engine ─────────────────────────────────────────────────────────────
-  core_engine:
-    name: core_engine
+  # ── ckgroup_core_engine ──────────────────────────────────────────────────────
+  ckgroup_core_engine:
+    name: ckgroup_core_engine
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: packages/core_engine
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.x'
-          channel: stable
-          cache: true
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Analyze
-        run: flutter analyze
-
-      - name: Test
-        run: flutter test
-
-  # ── branding_engine ──────────────────────────────────────────────────────────
-  branding_engine:
-    name: branding_engine
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: packages/branding_engine
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.x'
-          channel: stable
-          cache: true
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Analyze
-        run: flutter analyze
-
-      - name: Test
-        run: flutter test
-
-  # ── adaptive_components ──────────────────────────────────────────────────────
-  adaptive_components:
-    name: adaptive_components
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: packages/adaptive_components
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.x'
-          channel: stable
-          cache: true
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Analyze
-        run: flutter analyze
-
-      - name: Test
-        run: flutter test
-
-  # ── dashboard_framework ──────────────────────────────────────────────────────
-  dashboard_framework:
-    name: dashboard_framework
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: packages/dashboard_framework
+        working-directory: packages/ckgroup_core_engine
     steps:
       - uses: actions/checkout@v4
 

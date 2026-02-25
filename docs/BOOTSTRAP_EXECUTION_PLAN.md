@@ -16,19 +16,15 @@ by multiple host applications.
 ┌──────────────────────────────────────────┐
 │          design_system_showcase          │  Flutter app (demo)
 ├──────────────────────────────────────────┤
-│           dashboard_framework            │  Shell, grid, roles, plugins
-├──────────────────────────────────────────┤
-│          adaptive_components             │  Token-driven widgets
-├──────────────────────────────────────────┤
-│            branding_engine               │  Brand config & registry
-├──────────────────────────────────────────┤
-│              core_engine                 │  Design tokens & theme
+│          ckgroup_core_engine             │  Tokens, theme, branding,
+│                                          │  components, shell, grid,
+│                                          │  roles, plugins
 └──────────────────────────────────────────┘
 ```
 
 ---
 
-## Phase 1 — Token Foundation (`core_engine`)
+## Phase 1 — Token Foundation (`ckgroup_core_engine` — tokens layer)
 
 **Goal:** Define the single source of truth for all visual constants.
 
@@ -52,7 +48,7 @@ by multiple host applications.
 
 ---
 
-## Phase 2 — Brand System (`branding_engine`)
+## Phase 2 — Brand System (`ckgroup_core_engine` — branding layer)
 
 **Goal:** Allow multiple brands to coexist, each with its own token overrides and layout config.
 
@@ -70,7 +66,7 @@ by multiple host applications.
 
 ---
 
-## Phase 3 — Adaptive Components (`adaptive_components`)
+## Phase 3 — Adaptive Components (`ckgroup_core_engine` — components layer)
 
 **Goal:** Provide a library of token-driven, platform-aware widgets.
 
@@ -90,7 +86,7 @@ by multiple host applications.
 
 ---
 
-## Phase 4 — Dashboard Framework (`dashboard_framework`)
+## Phase 4 — Dashboard Framework (`ckgroup_core_engine` — dashboard layer)
 
 **Goal:** Provide a composable, role-aware dashboard shell and plugin system.
 
@@ -139,8 +135,8 @@ Triggered on: `push` and `pull_request` to `main`.
 
 ## Next Steps (Post-Bootstrap)
 
-1. **Asset pipeline** — add font and image asset management to `branding_engine`.
-2. **Localisation** — integrate `flutter_localizations` into `adaptive_components`.
+1. **Asset pipeline** — add font and image asset management to `ckgroup_core_engine`.
+2. **Localisation** — integrate `flutter_localizations` into `ckgroup_core_engine`.
 3. **Accessibility** — add semantic labels to all interactive widgets.
 4. **Golden tests** — establish pixel-perfect golden tests for all components.
 5. **Storybook-style catalogue** — extend `design_system_showcase` with isolated

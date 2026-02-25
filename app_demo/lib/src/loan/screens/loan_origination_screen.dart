@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:core_engine/core_engine.dart';
-import 'package:adaptive_components/adaptive_components.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 
 import '../theme/loan_theme.dart';
 import '../viewmodels/loan_form_viewmodel.dart';
-import '../widgets/common_widgets.dart';
 import 'step1_personal_info.dart';
 import 'step2_employment.dart';
 import 'step3_loan_details.dart';
@@ -249,7 +247,7 @@ class _Sidebar extends StatelessWidget {
                 Text(
                   'Complete all steps to apply',
                   style: typography.labelSmall.copyWith(
-                    color: colors.onPrimary.withOpacity(0.6),
+                    color: colors.onPrimary.withValues(alpha: 0.6),
                   ),
                 ),
               ],
@@ -288,7 +286,7 @@ class _Sidebar extends StatelessWidget {
                     Text(
                       'Progress',
                       style: typography.labelSmall.copyWith(
-                        color: colors.onPrimary.withOpacity(0.6),
+                        color: colors.onPrimary.withValues(alpha: 0.6),
                       ),
                     ),
                     Text(
@@ -304,7 +302,7 @@ class _Sidebar extends StatelessWidget {
                   borderRadius: BorderRadius.circular(AppRadius.full),
                   child: LinearProgressIndicator(
                     value: viewModel.progressFraction,
-                    backgroundColor: colors.onPrimary.withOpacity(0.2),
+                    backgroundColor: colors.onPrimary.withValues(alpha: 0.2),
                     valueColor: AlwaysStoppedAnimation<Color>(colors.accent),
                     minHeight: 6,
                   ),
@@ -354,11 +352,11 @@ class _SidebarStepTile extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: isActive
-            ? colors.onPrimary.withOpacity(0.1)
+            ? colors.onPrimary.withValues(alpha: 0.1)
             : Colors.transparent,
         borderRadius: BorderRadius.circular(AppRadius.md),
         border: isActive
-            ? Border.all(color: colors.accent.withOpacity(0.5))
+            ? Border.all(color: colors.accent.withValues(alpha: 0.5))
             : null,
       ),
       child: ListTile(
@@ -376,14 +374,14 @@ class _SidebarStepTile extends StatelessWidget {
             color: isCompleted
                 ? colors.accent
                 : isActive
-                    ? colors.onPrimary.withOpacity(0.2)
+                    ? colors.onPrimary.withValues(alpha: 0.2)
                     : Colors.transparent,
             border: Border.all(
               color: isCompleted
                   ? colors.accent
                   : isActive
                       ? colors.accent
-                      : colors.onPrimary.withOpacity(0.3),
+                      : colors.onPrimary.withValues(alpha: 0.3),
             ),
           ),
           child: Center(
@@ -394,7 +392,7 @@ class _SidebarStepTile extends StatelessWidget {
                     style: typography.labelSmall.copyWith(
                       color: isActive
                           ? colors.onPrimary
-                          : colors.onPrimary.withOpacity(0.5),
+                          : colors.onPrimary.withValues(alpha: 0.5),
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -406,14 +404,14 @@ class _SidebarStepTile extends StatelessWidget {
             color: isActive
                 ? colors.onPrimary
                 : isCompleted
-                    ? colors.onPrimary.withOpacity(0.8)
-                    : colors.onPrimary.withOpacity(0.5),
+                    ? colors.onPrimary.withValues(alpha: 0.8)
+                    : colors.onPrimary.withValues(alpha: 0.5),
           ),
         ),
         subtitle: Text(
           step.subtitle,
           style: typography.labelSmall.copyWith(
-            color: colors.onPrimary.withOpacity(0.4),
+            color: colors.onPrimary.withValues(alpha: 0.4),
             fontSize: 10,
           ),
         ),

@@ -5,20 +5,11 @@
 # Default: require review from the platform team for all files.
 * @your-org/platform-team
 
-# Token and theme primitives
-/packages/core_engine/ @your-org/design-systems
+# Unified core engine (tokens, branding, components, dashboard)
+/packages/ckgroup_core_engine/ @your-org/design-systems @your-org/frontend
 
-# Brand configuration
-/packages/branding_engine/ @your-org/design-systems
-
-# UI components
-/packages/adaptive_components/ @your-org/design-systems @your-org/frontend
-
-# Dashboard framework
-/packages/dashboard_framework/ @your-org/frontend
-
-# Showcase app
-/packages/design_system_showcase/ @your-org/frontend
+# Pure-Dart CLI
+/packages/ckgroup_core_cli/ @your-org/platform-team
 
 # CI configuration
 /.github/ @your-org/platform-team

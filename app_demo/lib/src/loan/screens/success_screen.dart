@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:core_engine/core_engine.dart';
-import 'package:adaptive_components/adaptive_components.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 
 import '../theme/loan_theme.dart';
 import '../viewmodels/loan_form_viewmodel.dart';
-import '../widgets/common_widgets.dart';
 import 'loan_applications_screen.dart';
 
 class SuccessScreen extends StatelessWidget {
@@ -39,7 +37,7 @@ class SuccessScreen extends StatelessWidget {
                 height: 100,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: LoanColors.success.withOpacity(0.1),
+                  color: LoanColors.success.withValues(alpha: 0.1),
                   border: Border.all(
                     color: LoanColors.success,
                     width: 3,
@@ -84,7 +82,7 @@ class SuccessScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(AppRadius.xl),
                 boxShadow: [
                   BoxShadow(
-                    color: colors.primary.withOpacity(0.3),
+                    color: colors.primary.withValues(alpha: 0.3),
                     blurRadius: 20,
                     offset: const Offset(0, 8),
                   ),
@@ -95,7 +93,7 @@ class SuccessScreen extends StatelessWidget {
                   Text(
                     'Application Reference',
                     style: typography.labelSmall.copyWith(
-                      color: colors.onPrimary.withOpacity(0.7),
+                      color: colors.onPrimary.withValues(alpha: 0.7),
                     ),
                   ),
                   const SizedBox(height: AppSpacing.xs),
@@ -110,7 +108,7 @@ class SuccessScreen extends StatelessWidget {
                   Text(
                     'Save this reference number for your records',
                     style: typography.labelSmall.copyWith(
-                      color: colors.onPrimary.withOpacity(0.5),
+                      color: colors.onPrimary.withValues(alpha: 0.5),
                     ),
                   ),
                 ],
@@ -160,28 +158,28 @@ class SuccessScreen extends StatelessWidget {
                         .copyWith(color: colors.textPrimary),
                   ),
                   const SizedBox(height: AppSpacing.md),
-                  _NextStep(
+                  const _NextStep(
                     step: '01',
                     title: 'Application Review',
                     description: 'Our team will review your application '
                         'within 1–2 business days.',
                   ),
                   const SizedBox(height: AppSpacing.sm),
-                  _NextStep(
+                  const _NextStep(
                     step: '02',
                     title: 'Document Verification',
                     description: 'You may be contacted to provide additional '
                         'supporting documents.',
                   ),
                   const SizedBox(height: AppSpacing.sm),
-                  _NextStep(
+                  const _NextStep(
                     step: '03',
                     title: 'Credit Assessment',
                     description: 'A credit check will be conducted based on '
                         'your consent.',
                   ),
                   const SizedBox(height: AppSpacing.sm),
-                  _NextStep(
+                  const _NextStep(
                     step: '04',
                     title: 'Decision & Disbursement',
                     description: 'You will receive the decision via email. '
@@ -253,7 +251,7 @@ class _NextStep extends StatelessWidget {
           width: 28,
           height: 28,
           decoration: BoxDecoration(
-            color: colors.accent.withOpacity(0.2),
+            color: colors.accent.withValues(alpha: 0.2),
             shape: BoxShape.circle,
           ),
           child: Center(

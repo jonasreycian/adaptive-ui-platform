@@ -29,7 +29,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-#### `core_engine` (v0.1.0)
+#### `ckgroup_core_engine` (v0.1.0)
+
+**Tokens & Theme** (formerly `core_engine`)
 - `ColorTokens` — immutable light and dark palettes with brand seed
   (`primary=#04382f`, `accent=#eabc3d`).
 - `SpacingTokens` — scale from `xs` (4 dp) to `xxxl` (48 dp).
@@ -44,14 +46,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `TokenResolver` — `InheritedWidget` distributing all token groups.
 - `ThemeController` — `ChangeNotifier` for runtime dark/light toggling.
 
-#### `branding_engine` (v0.1.0)
+**Branding** (formerly `branding_engine`)
 - `BrandConfig` — per-brand token overrides, layout config, and feature flags.
 - `LayoutConfig` — sidebar width, collapsed sidebar width, header height.
 - `BrandRegistry` — process-scoped singleton; throws `StateError` on duplicate.
 - `BrandResolver` — `InheritedWidget` providing the active `BrandConfig`.
 - `defaultBrand` — built-in default brand (`brandId: internal_default`).
 
-#### `adaptive_components` (v0.1.0)
+**Adaptive Components** (formerly `adaptive_components`)
 - `AdaptivePlatform` enum and `AdaptivePlatformDetector`.
 - `AdaptiveRender` — render different children per platform.
 - `AdaptiveButton` — primary / secondary / outlined / ghost variants.
@@ -60,7 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `AdaptiveScaffold` — scaffold wired to token background color.
 - `AdaptiveNavigationBar` — token-driven bottom navigation bar.
 
-#### `dashboard_framework` (v0.1.0)
+**Dashboard Framework** (formerly `dashboard_framework`)
 - `AdaptiveLayout` — mobile / tablet / desktop switching widget.
 - `ResponsiveBuilder` — builder callback with `ScreenSize` enum.
 - `DashboardShell` — drawer (mobile), rail (tablet), animated sidebar (desktop).

@@ -10,29 +10,11 @@ Add the packages to your app's `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  core_engine:
+  ckgroup_core_engine:
     git:
       url: https://github.com/your-org/adaptive-ui-platform.git
-      path: packages/core_engine
+      path: packages/ckgroup_core_engine
       ref: main   # pin to a tag or SHA in production
-
-  branding_engine:
-    git:
-      url: https://github.com/your-org/adaptive-ui-platform.git
-      path: packages/branding_engine
-      ref: main
-
-  adaptive_components:
-    git:
-      url: https://github.com/your-org/adaptive-ui-platform.git
-      path: packages/adaptive_components
-      ref: main
-
-  dashboard_framework:
-    git:
-      url: https://github.com/your-org/adaptive-ui-platform.git
-      path: packages/dashboard_framework
-      ref: main
 ```
 
 Then run:
@@ -49,14 +31,8 @@ If your host app lives in the same repository or a sibling directory:
 
 ```yaml
 dependencies:
-  core_engine:
-    path: ../adaptive-ui-platform/packages/core_engine
-  branding_engine:
-    path: ../adaptive-ui-platform/packages/branding_engine
-  adaptive_components:
-    path: ../adaptive-ui-platform/packages/adaptive_components
-  dashboard_framework:
-    path: ../adaptive-ui-platform/packages/dashboard_framework
+  ckgroup_core_engine:
+    path: ../adaptive-ui-platform/packages/ckgroup_core_engine
 ```
 
 ---
@@ -67,8 +43,7 @@ dependencies:
 
 ```dart
 // lib/main.dart
-import 'package:branding_engine/branding_engine.dart';
-import 'package:core_engine/core_engine.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 
 void main() {
   BrandRegistry.instance.register(
@@ -88,8 +63,7 @@ void main() {
 ```dart
 // lib/src/app.dart
 import 'package:flutter/material.dart';
-import 'package:core_engine/core_engine.dart';
-import 'package:branding_engine/branding_engine.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -132,7 +106,7 @@ class _MyAppState extends State<MyApp> {
 ### 3. Consume tokens in your widgets
 
 ```dart
-import 'package:core_engine/core_engine.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 import 'package:flutter/widgets.dart';
 
 class MyWidget extends StatelessWidget {
@@ -163,7 +137,7 @@ class MyWidget extends StatelessWidget {
 ## Registering a Plugin Module
 
 ```dart
-import 'package:dashboard_framework/dashboard_framework.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 import 'package:flutter/widgets.dart';
 
 class AnalyticsModule extends AdaptiveModule {
@@ -197,10 +171,10 @@ ModuleRegistry.instance.register(const AnalyticsModule());
 For production stability, pin to a Git tag:
 
 ```yaml
-  core_engine:
+  ckgroup_core_engine:
     git:
       url: https://github.com/your-org/adaptive-ui-platform.git
-      path: packages/core_engine
+      path: packages/ckgroup_core_engine
       ref: v0.1.0
 ```
 

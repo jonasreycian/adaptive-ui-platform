@@ -70,24 +70,14 @@ See [`docs/BOOTSTRAP_EXECUTION_PLAN.md`](docs/BOOTSTRAP_EXECUTION_PLAN.md) for t
 
 | Package | Responsibility |
 |---|---|
-| `core_engine` | Design tokens (`ColorTokens`, `SpacingTokens`, `MotionTokens`, …) and `TokenResolver` |
-| `branding_engine` | `BrandConfig`, `BrandRegistry`, `BrandResolver`, `defaultBrand` |
-| `adaptive_components` | Token-driven widgets — `AdaptiveButton`, `AdaptiveTextField`, `AdaptiveScaffold`, … |
-| `dashboard_framework` | Layouts, shell, grid, role-based module registry, `DashboardShell` |
-| `design_system_showcase` | Demo Flutter app wiring all packages together |
+| `ckgroup_core_engine` | Design tokens, `TokenResolver`, branding (`BrandConfig`, `BrandRegistry`, `BrandResolver`), token-driven widgets (`AdaptiveButton`, `AdaptiveTextField`, `AdaptiveScaffold`, …), layouts, shell, grid, role-based module registry, `DashboardShell` |
 | `ckgroup_core_cli` | Pure-Dart CLI for managing `page_registry.json` |
 
-Dependency direction (never reverse this):
+Dependency direction:
 ```
-apps / design_system_showcase
+apps (design_system_showcase, loan_origination_system)
        ↓
-dashboard_framework
-       ↓
-adaptive_components
-       ↓
-branding_engine
-       ↓
-core_engine
+ckgroup_core_engine
 ```
 
 ### Token rules (critical)
@@ -103,8 +93,8 @@ core_engine
   padding: EdgeInsets.all(16),
   color: Color(0xFF04382F),
   ```
-- `Color()` constructors are allowed **only** inside `packages/core_engine/lib/src/tokens/color_tokens.dart`.
-- `Duration()` constructors are allowed **only** inside `packages/core_engine/lib/src/tokens/motion_tokens.dart`.
+- `Color()` constructors are allowed **only** inside `packages/ckgroup_core_engine/lib/src/tokens/color_tokens.dart`.
+- `Duration()` constructors are allowed **only** inside `packages/ckgroup_core_engine/lib/src/tokens/motion_tokens.dart`.
 
 ### Widget guidelines
 
@@ -142,9 +132,9 @@ Widget buildUnderTest({required Widget child, bool isDark = false}) {
 ### Commit message format
 
 ```
-feat(adaptive_components): add AdaptiveCard widget
-fix(dashboard_framework): correct sidebar collapse animation
-test(core_engine): cover MotionTokens edge cases
+feat(ckgroup_core_engine): add AdaptiveCard widget
+fix(ckgroup_core_engine): correct sidebar collapse animation
+test(ckgroup_core_engine): cover MotionTokens edge cases
 docs: update MULTI_APP_CONSUMPTION.md
 ```
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:core_engine/core_engine.dart';
-import 'package:adaptive_components/adaptive_components.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 
 /// Demonstrates all adaptive UI components.
 class ComponentDemoScreen extends StatefulWidget {

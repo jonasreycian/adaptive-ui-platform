@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:core_engine/core_engine.dart';
-import 'package:branding_engine/branding_engine.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 import 'screens/home_screen.dart';
 
 /// Root widget for the design-system showcase application.

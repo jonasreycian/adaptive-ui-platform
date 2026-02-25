@@ -26,15 +26,12 @@ melos bootstrap
 
 ```
 adaptive-ui-platform/
-├── app/
+├── apps/
 │   ├── 00_design_system_showcase/      # Demo app showcasing components and tokens
 │   └── 01_loan_origination_system/     # Example feature app using the design system
 ├── packages/
-│   ├── core_engine/           # Design tokens + theme
-│   ├── branding_engine/       # Brand config + registry
-│   ├── adaptive_components/   # Token-driven widgets
-│   ├── dashboard_framework/   # Shell, grid, roles, plugins
-│   └── design_system_showcase/ # Demo app
+│   ├── ckgroup_core_engine/   # Unified: tokens, theme, branding, components, dashboard
+│   └── ckgroup_core_cli/      # Pure-Dart CLI for page_registry.json
 ├── docs/
 ├── .github/workflows/
 ├── melos.yaml
@@ -106,10 +103,10 @@ See [`docs/TESTING_STRATEGY.md`](docs/TESTING_STRATEGY.md) for detailed examples
 Use [Conventional Commits](https://www.conventionalcommits.org/):
 
 ```
-feat(core_engine): add SemanticColorTokens
-fix(branding_engine): throw on duplicate brand ID
+feat(ckgroup_core_engine): add SemanticColorTokens
+fix(ckgroup_core_engine): throw on duplicate brand ID
 docs: update MULTI_APP_CONSUMPTION.md
-test(adaptive_components): add AdaptiveTextField widget test
+test(ckgroup_core_engine): add AdaptiveTextField widget test
 ```
 
 ---

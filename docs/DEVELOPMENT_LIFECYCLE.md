@@ -32,20 +32,14 @@ Understand the problem, stakeholders, and constraints before any code is written
 
 ### Decisions
 
-1. **Package ownership** — identify which package owns the feature (`core_engine`, `branding_engine`, `adaptive_components`, `dashboard_framework`, or a new package).
+1. **Package ownership** — identify which part of `ckgroup_core_engine` owns the feature (tokens, branding, components, dashboard), or whether a new package is needed.
 2. **Token contract** — define any new design tokens needed (colours, spacing, motion).
 3. **API surface** — sketch the public API before implementation begins.
 4. **Dependency direction** — dependencies must flow downward:
    ```
-   design_system_showcase / apps
+   apps (design_system_showcase, loan_origination_system)
          ↓
-   dashboard_framework
-         ↓
-   adaptive_components
-         ↓
-   branding_engine
-         ↓
-   core_engine
+   ckgroup_core_engine
    ```
    No circular dependencies are permitted.
 
@@ -88,7 +82,7 @@ melos test
 melos test:dart   # pure-Dart packages only
 
 # Run a single package
-cd packages/adaptive_components
+cd packages/ckgroup_core_engine
 flutter test
 ```
 
@@ -134,12 +128,10 @@ See [`docs/TESTING_STRATEGY.md`](TESTING_STRATEGY.md) for full details, examples
 
 | Job | Trigger | Steps |
 |---|---|---|
-| `core_engine` | push / PR to `main` | `flutter pub get` → `flutter analyze` → `flutter test` |
-| `branding_engine` | push / PR to `main` | same |
-| `adaptive_components` | push / PR to `main` | same |
-| `dashboard_framework` | push / PR to `main` | same |
-| `design_system_showcase` | push / PR to `main` | same |
+| `ckgroup_core_engine` | push / PR to `main` | `flutter pub get` → `flutter analyze` → `flutter test` |
 | `ckgroup_core_cli` | push / PR to `main` | `dart pub get` → `dart analyze` → `dart test` |
+| `design_system_showcase` | push / PR to `main` | `flutter pub get` → `flutter analyze` → `flutter test` |
+| `loan_origination_system` | push / PR to `main` | `flutter pub get` → `flutter analyze` → `flutter test` |
 
 ### Planned additions
 

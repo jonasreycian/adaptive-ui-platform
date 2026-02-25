@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:adaptive_components/adaptive_components.dart';
-import 'package:core_engine/core_engine.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 import 'package:intl/intl.dart';
 
 import '../theme/loan_theme.dart';
@@ -443,9 +442,9 @@ class _StatusBadge extends StatelessWidget {
         vertical: 3,
       ),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.12),
+        color: color.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(AppRadius.full),
-        border: Border.all(color: color.withOpacity(0.4)),
+        border: Border.all(color: color.withValues(alpha: 0.4)),
       ),
       child: Text(
         _statusLabel(status),
@@ -492,7 +491,7 @@ class _FilterChip extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: selected
-              ? chipColor.withOpacity(0.12)
+              ? chipColor.withValues(alpha: 0.12)
               : colors.surface,
           borderRadius: BorderRadius.circular(AppRadius.full),
           border: Border.all(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:core_engine/core_engine.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 
 import '../models/loan_application.dart';
 import '../theme/loan_theme.dart';
@@ -185,7 +185,7 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
                   label: 'Gender',
                   isRequired: true,
                   child: DropdownButtonFormField<String>(
-                    value: _selectedGender,
+                    initialValue: _selectedGender,
                     hint: const Text('Select'),
                     items: genderOptions
                         .map((g) => DropdownMenuItem(

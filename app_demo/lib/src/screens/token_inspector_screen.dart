@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:core_engine/core_engine.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 
 /// A screen that renders all active design tokens.
 class TokenInspectorScreen extends StatelessWidget {

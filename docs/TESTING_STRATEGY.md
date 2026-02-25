@@ -27,12 +27,12 @@ This document explains *what* to test, *how* to write each test type, and *where
 - Model serialisation (`LoanApplicationModel.toJson`)
 - Pure utility functions
 
-### Example — token value test (`core_engine`)
+### Example — token value test (`ckgroup_core_engine`)
 
 ```dart
-// packages/core_engine/test/tokens_test.dart
+// packages/ckgroup_core_engine/test/tokens_test.dart
 import 'package:flutter_test/flutter_test.dart';
-import 'package:core_engine/core_engine.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 
 void main() {
   group('SpacingTokens', () {
@@ -59,13 +59,12 @@ void main() {
 }
 ```
 
-### Example — registry test (`branding_engine`)
+### Example — registry test (`ckgroup_core_engine`)
 
 ```dart
-// packages/branding_engine/test/brand_registry_test.dart
+// packages/ckgroup_core_engine/test/brand_registry_test.dart
 import 'package:flutter_test/flutter_test.dart';
-import 'package:branding_engine/branding_engine.dart';
-import 'package:core_engine/core_engine.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 
 void main() {
   setUp(() => BrandRegistry.instance.clear());
@@ -112,9 +111,9 @@ void main() {
 Wrap the widget under test in a minimal `MaterialApp` + `TokenResolver`:
 
 ```dart
-// packages/adaptive_components/test/helpers/test_harness.dart
+// packages/ckgroup_core_engine/test/helpers/test_harness.dart
 import 'package:flutter/material.dart';
-import 'package:core_engine/core_engine.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 
 Widget buildUnderTest({required Widget child, bool isDark = false}) {
   final colors = isDark ? ColorTokens.dark : ColorTokens.light;
@@ -135,10 +134,10 @@ Widget buildUnderTest({required Widget child, bool isDark = false}) {
 ### Example — `AdaptiveButton` widget test
 
 ```dart
-// packages/adaptive_components/test/adaptive_button_test.dart
+// packages/ckgroup_core_engine/test/adaptive_button_test.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:adaptive_components/adaptive_components.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 import 'helpers/test_harness.dart';
 
 void main() {
@@ -172,7 +171,7 @@ void main() {
 ### Example — responsive layout widget test
 
 ```dart
-// packages/dashboard_framework/test/adaptive_layout_test.dart
+// packages/ckgroup_core_engine/test/adaptive_layout_test.dart
 testWidgets('shows mobile widget at 400px width', (tester) async {
   await tester.pumpWidget(
     MaterialApp(
@@ -267,16 +266,13 @@ flutter drive \
 
 | Package | Minimum line coverage |
 |---|---|
-| `core_engine` | 90 % |
-| `branding_engine` | 85 % |
-| `adaptive_components` | 80 % |
-| `dashboard_framework` | 80 % |
+| `ckgroup_core_engine` | 85 % |
 | App demos | 70 % (unit + widget) |
 
 Generate an HTML coverage report:
 
 ```bash
-cd packages/core_engine
+cd packages/ckgroup_core_engine
 flutter test --coverage
 genhtml coverage/lcov.info -o coverage/html
 open coverage/html/index.html

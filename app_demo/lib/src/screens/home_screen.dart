@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:core_engine/core_engine.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 import 'token_inspector_screen.dart';
 import 'component_demo_screen.dart';
 import 'dashboard_demo_screen.dart';

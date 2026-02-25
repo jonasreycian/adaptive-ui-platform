@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:core_engine/core_engine.dart';
-import 'package:adaptive_components/adaptive_components.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 import '../theme/loan_theme.dart';
 
 // ---------------------------------------------------------------------------
@@ -32,7 +31,7 @@ class SectionHeader extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(AppSpacing.sm),
               decoration: BoxDecoration(
-                color: colors.primary.withOpacity(0.1),
+                color: colors.primary.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(AppRadius.md),
               ),
               child: Icon(

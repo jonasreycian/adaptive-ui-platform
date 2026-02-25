@@ -19,22 +19,15 @@ dependencies:
   stacked_services: ^1.1.0
 
   # Platform packages
-  core_engine:
-    path: ../adaptive-ui-platform/packages/core_engine
-  branding_engine:
-    path: ../adaptive-ui-platform/packages/branding_engine
-  adaptive_components:
-    path: ../adaptive-ui-platform/packages/adaptive_components
-  dashboard_framework:
-    path: ../adaptive-ui-platform/packages/dashboard_framework
+  ckgroup_core_engine:
+    path: ../adaptive-ui-platform/packages/ckgroup_core_engine
 ```
 
 ### 2. Register brands in `main.dart`
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:branding_engine/branding_engine.dart';
-import 'package:core_engine/core_engine.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 import 'app.dart';
 
 void main() {
@@ -56,8 +49,7 @@ void main() {
 // lib/app.dart
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:core_engine/core_engine.dart';
-import 'package:branding_engine/branding_engine.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 import 'app_viewmodel.dart';
 
 class MyApp extends StatelessWidget {
@@ -113,7 +105,7 @@ class AppViewModel extends BaseViewModel {
 // lib/features/home/home_view.dart
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:adaptive_components/adaptive_components.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 import 'home_viewmodel.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
@@ -167,14 +159,8 @@ dependencies:
   flutter_bloc: ^8.1.0
   equatable: ^2.0.5
 
-  core_engine:
-    path: ../adaptive-ui-platform/packages/core_engine
-  branding_engine:
-    path: ../adaptive-ui-platform/packages/branding_engine
-  adaptive_components:
-    path: ../adaptive-ui-platform/packages/adaptive_components
-  dashboard_framework:
-    path: ../adaptive-ui-platform/packages/dashboard_framework
+  ckgroup_core_engine:
+    path: ../adaptive-ui-platform/packages/ckgroup_core_engine
 ```
 
 ### 2. Register brands in `main.dart`
@@ -182,8 +168,7 @@ dependencies:
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:branding_engine/branding_engine.dart';
-import 'package:core_engine/core_engine.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 import 'blocs/theme/theme_cubit.dart';
 import 'app.dart';
 
@@ -224,8 +209,7 @@ class ThemeCubit extends Cubit<bool> {
 // lib/app.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:core_engine/core_engine.dart';
-import 'package:branding_engine/branding_engine.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 import 'blocs/theme/theme_cubit.dart';
 
 class MyApp extends StatelessWidget {
@@ -333,7 +317,7 @@ class LoanBloc extends Bloc<LoanEvent, LoanState> {
 // lib/screens/loan_form_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:adaptive_components/adaptive_components.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 import '../blocs/loan/loan_bloc.dart';
 
 class LoanFormScreen extends StatelessWidget {

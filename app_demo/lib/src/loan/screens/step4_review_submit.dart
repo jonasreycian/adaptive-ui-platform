@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:core_engine/core_engine.dart';
-import 'package:adaptive_components/adaptive_components.dart';
+import 'package:ckgroup_core_engine/ckgroup_core_engine.dart';
 
 import '../theme/loan_theme.dart';
 import '../viewmodels/loan_form_viewmodel.dart';
