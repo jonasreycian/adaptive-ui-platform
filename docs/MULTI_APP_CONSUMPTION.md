@@ -1,6 +1,6 @@
 # Multi-App Consumption Guide
 
-This guide explains how a host application consumes the `adaptive-ui-platform` packages via Git.
+This guide explains how a host application consumes the `adaptive_ui_platform` packages via Git.
 
 ---
 
@@ -32,7 +32,7 @@ If your host app lives in the same repository or a sibling directory:
 ```yaml
 dependencies:
   ckgroup_core_engine:
-    path: ../adaptive-ui-platform/packages/ckgroup_core_engine
+    path: ../adaptive_ui_platform/packages/ckgroup_core_engine
 ```
 
 ---

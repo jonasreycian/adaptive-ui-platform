@@ -1,6 +1,9 @@
 name: adaptive_ui_platform
-description: Root workspace pubspec for the adaptive UI platform monorepo.
-publish_to: none
-
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ">=3.10.7 <4.0.0"
+dev_dependencies:
+  melos: ^7.4.0
+workspace:
+  - packages/ckgroup_core_cli
+  - packages/ckgroup_core_engine
+melos: 

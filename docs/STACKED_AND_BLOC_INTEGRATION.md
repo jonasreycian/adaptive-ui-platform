@@ -2,7 +2,7 @@
 
 ## Adaptive UI Platform
 
-This guide shows how to consume `adaptive-ui-platform` packages inside apps built with two popular Flutter architectures: **Stacked** and **BLoC**.
+This guide shows how to consume `adaptive_ui_platform` packages inside apps built with two popular Flutter architectures: **Stacked** and **BLoC**.
 
 ---
 
@@ -20,7 +20,7 @@ dependencies:
 
   # Platform packages
   ckgroup_core_engine:
-    path: ../adaptive-ui-platform/packages/ckgroup_core_engine
+    path: ../adaptive_ui_platform/packages/ckgroup_core_engine
 ```
 
 ### 2. Register brands in `main.dart`
@@ -160,7 +160,7 @@ dependencies:
   equatable: ^2.0.5
 
   ckgroup_core_engine:
-    path: ../adaptive-ui-platform/packages/ckgroup_core_engine
+    path: ../adaptive_ui_platform/packages/ckgroup_core_engine
 ```
 
 ### 2. Register brands in `main.dart`

@@ -66,7 +66,7 @@ main            ← protected; requires passing CI + 1 review
 
 ```bash
 git clone https://github.com/jonasreycian/adaptive-ui-platform.git
-cd adaptive-ui-platform
+cd adaptive_ui_platform
 dart pub global activate melos
 melos bootstrap
 ```
