@@ -27,7 +27,6 @@ melos bootstrap
 ```
 adaptive-ui-platform/
 ├── apps/
-│   ├── 00_design_system_showcase/      # Demo app showcasing components and tokens
 │   └── 01_loan_origination_system/     # Example feature app using the design system
 ├── packages/
 │   ├── ckgroup_core_engine/   # Unified: tokens, theme, branding, components, dashboard

@@ -17,7 +17,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `.github/pull_request_template.md` — PR checklist enforcing test requirements.
 - `README.md` — documentation index table and **Copilot Guidelines** section.
 - Updated `CONTRIBUTING.md` to reference new docs and clarify test requirements.
-- `packages/design_system_showcase/test/showcase_test.dart` — widget tests for `ShowcaseApp`.
 
 ### Fixed
 - `dashboard_framework` — `page_registry_widget_test.dart`: relaxed `Center` assertion from `findsOneWidget` to `findsAtLeastNWidgets(1)` to be resilient against internal Flutter framework widgets.
@@ -71,10 +70,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `DashboardPreset` + `PresetRegistry` — role-based preset management.
 - `AdaptiveModule` — abstract base for pluggable dashboard modules.
 - `ModuleRegistry` — singleton; throws on duplicate or empty module ID.
-
-#### `design_system_showcase` (v1.0.0+1)
-- Full demo app with `HomeScreen`, `TokenInspectorScreen`,
-  `ComponentDemoScreen`, `DashboardDemoScreen`, and `BrandSwitcherScreen`.
 
 #### CI / Governance
 - GitHub Actions workflow (`ci.yml`) — `flutter analyze` + `flutter test`

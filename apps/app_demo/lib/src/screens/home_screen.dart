@@ -4,6 +4,7 @@ import 'token_inspector_screen.dart';
 import 'component_demo_screen.dart';
 import 'dashboard_demo_screen.dart';
 import 'brand_switcher_screen.dart';
+import 'table_demo_screen.dart';
 import '../loan/screens/loan_origination_screen.dart';
 
 /// The home screen showing navigation to all showcase demos.
@@ -39,6 +40,17 @@ class HomeScreen extends StatelessWidget {
           context,
           MaterialPageRoute<void>(
             builder: (_) => const ComponentDemoScreen(),
+          ),
+        ),
+      ),
+      _DemoEntry(
+        title: 'Data Table',
+        subtitle: 'Sortable, filterable data table',
+        icon: Icons.table_chart_outlined,
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute<void>(
+            builder: (_) => const TableDemoScreen(),
           ),
         ),
       ),

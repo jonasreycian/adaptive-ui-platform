@@ -70,6 +70,11 @@ class AdaptiveTextField extends StatelessWidget {
         suffixIcon: suffixIcon,
         filled: true,
         fillColor: colors.surface,
+        isDense: false,
+        contentPadding: EdgeInsets.symmetric(
+          horizontal: tokens.spacing.md,
+          vertical: tokens.spacing.md,
+        ),
         labelStyle: TextStyle(color: colors.textSecondary),
         hintStyle: TextStyle(color: colors.textSecondary),
         enabledBorder: border,

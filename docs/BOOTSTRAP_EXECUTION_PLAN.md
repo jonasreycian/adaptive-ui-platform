@@ -122,6 +122,36 @@ by multiple host applications.
 
 ---
 
+## Phase 6 — UI Refinements & Notion-style Dashboard
+
+**Goal:** Refine the visual language to match Notion's minimal, card-based aesthetic using the defined color tokens.
+
+| Deliverable | Status |
+|---|---|
+| **Color Token Verification** — Ensure all tokens match the defined palette (see below) | ⬜ |
+| **Monospace/Serif Typography** — Add Notion-like font stack execution | ⬜ |
+| **Card UI Update** — Refine `AdaptiveCard` to use flat, minimal borders/shadows | ⬜ |
+| **Dashboard Layout** — Implement sidebar + content area with Notion-like spacing | ⬜ |
+| **Page Headers** — Add icon + cover image support to page headers | ⬜ |
+| **Interactive States** — subtle hover backgrounds on list items | ⬜ |
+
+**Target Color Palette:**
+
+*Light Mode:*
+- Primary: `#04382f`
+- Accent: `#eabc3d`
+- Background: `#f4f6f5`
+- Surface: `#ffffff`
+- Text Primary: `#04382f`
+
+*Dark Mode:*
+- Primary: `#eabc3d`
+- Background: `#021d18`
+- Surface: `#04382f`
+- Text Primary: `#ffffff`
+
+---
+
 ## CI Pipeline
 
 The GitHub Actions workflow (`.github/workflows/ci.yml`) runs:
